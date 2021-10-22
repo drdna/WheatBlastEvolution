@@ -1,0 +1,3 @@
+# WheatBlastEvolution
+
+Contains code and data files for Figures presented in Rahnama et al. (submitted): RECOMBINATION OF STANDING VARIATION IN A MULTI-HYBRID SWARM DROVE ADAPTIVE RADIATION IN A FUNGAL PATHOGEN AND GAVE RISE TO TWO PANDEMIC PLANT DISEASES
