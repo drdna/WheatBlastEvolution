@@ -7,5 +7,5 @@
 iSNPdirectory <WheatBlast>
 ```
 2. Fasta files for each genome sequence were then copied into the *GENOMES* directory
-3. The iSNPcaller was then run using a [SLURM script] (/scripts)
+3. The iSNPcaller was then run using a [SLURM script] (/scripts/iSNPcaller_MT.sh)
 
