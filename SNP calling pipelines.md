@@ -23,4 +23,6 @@ for f in `ls FASTQ_DIRECTORY/*_1.fastq.gz | awk -F '/|_' '{print $3}`; do sbatch
 3. The "snps-only" VCF files were copied into a new directory and illegal SNP calls were then filtered out using the SmartSNPs.pl script:
 ```bash
 for f in `ls VCF_FILES/*vcf`; do SmartSNPs.pl B71_ALIGN_STRINGs/B71.B71_alignments $f 20 10; done
+```
+4. The resulting filtered files were cross-referenced against the iSNPcaller calls using the [BWT2-GATK.pl](/scripts/.pl) script and any sites that were not in perfect correspondence (i.e. same SNP called in same set of strains) were further investigated by examining the raw read data to determine the reason for incongruencies, and the SNP calll dataset was corrected as indicated (site rejected, or missed calls added).
 
