@@ -10,9 +10,32 @@ iSNPdirectory <WheatBlast>
 2. Fasta files for each genome sequence were then copied into the *GENOMES* directory
 3. iSNPcaller was then run in multi-threaded mode using the [iSNPcaller_MT.sh](/scripts/iSNPcaller_MT.sh) SLURM script.
 
-## SNPcalling against the B71 reference genome
+## SNPcalling against the B71 reference genome with iSNPcaller
 
-1. The B71 reference genome was indexed using bowtie2-build:
+1. The fasta headers in each genome assembly were converted to a standard format:
+```bash
+perl SimpleFastaHeaders_SB.pl RAW_GENOMEs
+```
+2. Each genome assembly was run through a custom script that masks all nucleotide positions that occur in multiple alignments when the genome is BLASTed against itself:
+```bash
+mkdir MASKED_GENOMEs
+mv RAW_GENOMEs/*.fasta MASKED_GENOMEs
+perl RMSA_MT.pl MASKED_GENOMEs
+```
+3. The B71 reference genome was then BLASTed against each of the masked genome assemblies:
+```bash
+mkdir B71v5_BLAST
+cd MASKED_GENOMEs
+for f in `ls MASKED_GENOMEs/*masked.fasta`; do blastn -query B71v5_nh_masked.fasta -subject $f -evalue 1e-20 -max_target_seqs 2000 -outfmt '6 qseqid sseqid qstart qend sstart send btop' > ../B71v5_BLAST/B71v5.$f.BLAST; done
+```
+4. SNPs were then called using the SNPcalling module of iSNPcaller:
+```bash
+cd ..
+perl Run_SU4.pl B71v5_BLAST B71v5_SNPs
+```
+## SNPcalling against the B71 reference genome with GATK:
+
+6. The B71 reference genome was indexed using bowtie2-build:
 ```bash
 bowtie2-build B71.fasta B71_index/B71
 ```
