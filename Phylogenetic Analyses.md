@@ -1,7 +1,5 @@
-# SNP calling pipelines
-
-## Incremental SNP calling for all pairwise combinations of genomes using iSNPcaller multi-threaded
-This script masks all repeats in the reference and query genomes before alignment and then re-masks "cryptic" repeats that were not detected using genome self-comparision before doing the SNP calling.
+# Phylogenetic Analysis based on pairwise distance data
+Standard SNP callers fail to detect repetitive portions of fungal genomes which results in the reporting of false variants between non-allelic sequences. The common repeat-masking programs also miss large numbers of repeated sequences. To address this problem we built a BLAST-based SNP caller that pre-masks  all repeats in the reference and query genomes before alignment, and then performs a second round of masking after alignment to screen out "cryptic" repeats that are not detected using genome self-comparision. Our program, iSNPcaller_MT.sh](/scripts/iSNPcaller_MT.sh) works in an incremental fashion where newly added genomes are first compared with one another, and are with those that have been previously analyzed.
 
 1. The correct directory structure for iSNPcaller was created by running the iSNPdirectory script:
 ```bash
