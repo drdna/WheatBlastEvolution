@@ -10,7 +10,7 @@ iSNPdirectory <WheatBlast>
 2. Fasta files for each genome sequence were then copied into the *GENOMES* directory
 3. iSNPcaller was then run in multi-threaded mode using the [iSNPcaller_MT.sh](/scripts/iSNPcaller_MT.sh) SLURM script.
 
-## SNPcalling against the B71 reference genome with iSNPcaller
+## SNPcalling against the B71 reference genome using iSNPcaller:
 
 1. The fasta headers in each genome assembly were converted to a standard format:
 ```bash
@@ -33,9 +33,10 @@ for f in `ls MASKED_GENOMEs/*masked.fasta`; do blastn -query B71v5_nh_masked.fas
 cd ..
 perl Run_SU4.pl B71v5_BLAST B71v5_SNPs
 ```
-## SNPcalling against the B71 reference genome with GATK:
+## SNPcalling against the B71 reference genome using GATK:
+SNPs were called using a standard GATK pipeline. The variant call format file was then filtered to remove: i) sites that occurred in repeat regions of the reference genome (to ensure that all calls were between allelic loci); ii) heterozygous calls (due to repeat regions in the query genome); and iii) variant calls with low coverage (usually due to poor sequence quality in homopolymer tracts).
 
-6. The B71 reference genome was indexed using bowtie2-build:
+1. The B71 reference genome was indexed using bowtie2-build:
 ```bash
 bowtie2-build B71.fasta B71_index/B71
 ```
@@ -45,7 +46,7 @@ for f in `ls FASTQ_DIRECTORY/*_1.fastq.gz | awk -F '/|_' '{print $3}`; do sbatch
 ```
 3. The "snps-only" VCF files were copied into a new directory and illegal SNP calls were then filtered out using the SmartSNPs.pl script:
 ```bash
-for f in `ls VCF_FILES/*vcf`; do SmartSNPs.pl B71_ALIGN_STRINGs/B71.B71_alignments $f 20 10; done
+for f in `ls VCF_FILES/*vcf`; do SmartSNPs.pl B71_ALIGN_STRINGs/B71.B71_alignments $f 20 10; done   # alt:ref ratio >= 20; read coverage >= 10
 ```
-4. The resulting filtered files were cross-referenced against the iSNPcaller calls using the [BWT2-GATK.pl](/scripts/.pl) script and any sites that were not in perfect correspondence (i.e. same SNP called in same set of strains) were further investigated by examining the raw read data to determine the reason for incongruencies, and the SNP calll dataset was corrected as indicated (site rejected, or missed calls added).
+4. The resulting filtered files were cross-referenced against the iSNPcaller calls using the [BWT2-GATK.pl](/scripts/.pl) script and any sites that were not in perfect correspondence (i.e. same SNP called in same set of strains) were further investigated by examining the raw read data to determine the reason for incongruencies, and the SNP call dataset was corrected as indicated (site rejected, or missed calls added).
 
