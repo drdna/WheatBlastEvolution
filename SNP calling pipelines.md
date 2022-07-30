@@ -34,7 +34,7 @@ cd ..
 perl Run_SU4.pl B71v5_BLAST B71v5_SNPs
 ```
 ## SNPcalling against the B71 reference genome using GATK:
-SNPs were called using a standard GATK pipeline. The variant call format file was then filtered to remove: i) sites that occurred in repeat regions of the reference genome (to ensure that all calls were between allelic loci); ii) heterozygous calls (due to repeat regions in the query genome); and iii) variant calls with low coverage (usually due to poor sequence quality in homopolymer tracts).
+SNPs were called using a standard GATK pipeline. The variant call format file was then filtered to remove: i) sites that occurred in repeat regions of the reference genome (to ensure that all calls were between allelic loci); ii) heterozygous calls (alt:ref ratio < 20; to avoid calling variants between non allelic loci, due to repeat regions in the query genome); and iii) variant calls with low coverage (DP < 10; usually false calls caused by poor sequence quality in homopolymer tracts).
 
 1. The B71 reference genome was indexed using bowtie2-build:
 ```bash
