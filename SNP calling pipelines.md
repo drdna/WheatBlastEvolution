@@ -1,6 +1,6 @@
 # SNP calling pipelines
 
-## Incremental SNP calling using iSNPcaller multi-threaded
+## Incremental SNP calling for all pairwise combinations of genomes using iSNPcaller multi-threaded
 This script masks all repeats in the reference and query genomes before alignment and then re-masks "cryptic" repeats that were not detected using genome self-comparision before doing the SNP calling.
 
 1. The correct directory structure for iSNPcaller was created by running the iSNPdirectory script:
