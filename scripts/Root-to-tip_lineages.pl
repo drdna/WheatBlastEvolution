@@ -41,7 +41,7 @@ while($U = <DATA>) {
   
   else {
   
-    print OUT "$U\n"
+    print OUT "lineage\t$U\n"
     
   }
 
