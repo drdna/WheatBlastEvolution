@@ -4,4 +4,4 @@ The Chr1Chr2Chr5_dated.fasta file comprising all SNPs on the co-inherited region
 ![Distances vs Dates](/data/Root2Tip.png)
 ## Molecular Dating
 
-A carefully curated SNP dataset see [filtering SNP calls](/drdna/WheatBlastEvolution/Phylogenetic Analyses.md#Filtering-to-remove-false-SNP-calls)
+A carefully curated SNP dataset see [filtering SNP calls](/drdna/WheatBlastEvolution/Phylogenetic-Analyses#Filtering-to-remove-false-SNP-calls)
