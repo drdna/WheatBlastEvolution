@@ -38,6 +38,12 @@ while($U = <DATA>) {
     print OUT "$Hash{$List[0]}\t$U\n";
 
   }
+  
+  else {
+  
+    print OUT "$U\n"
+    
+  }
 
 }
 
