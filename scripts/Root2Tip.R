@@ -29,6 +29,6 @@ p <- ggplot(df, aes(x=date, y=distance, label = rownames(df))) + geom_point(aes(
 
 p + geom_smooth(aes(x=date, y=distance), color = "black", method="lm", se=FALSE, fullrange=TRUE, show.legend = FALSE) +
   stat_regline_equation(label.x=1932, label.y=21.7, aes(x=date, y=distance, label = ..rr.label..), size = 6, show.legend = FALSE)
-  print (p)
+
 
     
