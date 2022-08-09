@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 
-open(LOOKUP, "Root-to-tip_sample_lineages.txt") || die "Usage: perl Root-to-tip_lineages.pl\nPlace Root-to-tip_sample_lineages.txt file in working directory\n";
+open(LOOKUP, "Root-to-tip_sample_lineages.txt") || die "Usage: perl Root-to-tip_addLineages.pl\nPlace Root-to-tip_sample_lineages.txt file in working directory\n";
 
 while($D = <LOOKUP>) {
 
@@ -23,7 +23,7 @@ open(OUT, '>', "Root-to-tip_data_lineages.txt") || die "Can't create output file
 
 # open undated dataset and add a lineages column 
 
-open(DATA, "Root-to-tip_data.txt") || die "Usage: perl Root-to-tip_lineages.pl\nPlace Root-to-tip_data.txt file in working directory\n";
+open(DATA, "Root-to-tip_data.txt") || die "Usage: perl Root-to-tip_addLineages.pl\nPlace Root-to-tip_data.txt file in working directory\n";
 
 while($U = <DATA>) {
 
