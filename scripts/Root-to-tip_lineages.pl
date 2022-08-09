@@ -7,7 +7,7 @@ while($D = <LOOKUP>) {
 
   chomp($D);
 
-  @List = split(/\t/, $D);
+  @List = split(/\t| +/, $D);
 
   $Hash{$List[0]} = $List[1];
 
@@ -33,7 +33,7 @@ while($U = <DATA>) {
 
   if($count > 1) {
 
-    @List = split(/\t/, $U);
+    @List = split(/\t| +/, $U);
 
     print OUT "$Hash{$List[0]}\t$U\n";
 
