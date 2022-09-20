@@ -50,7 +50,7 @@ for f in `ls VCF_FILES/*vcf`; do SmartSNPs.pl B71_ALIGN_STRINGs/B71.B71_alignmen
 ```
 
 ## Manual filtering based on comparison between iSNPcaller and BWT/GATK variant datasets
-1. The SmartSNPs-filtered data were summarized using the Summarize_SNPs.pl script which produced a convenient format for manual inspection of the data to identify possible problems (especially calls in repeated regions that escape repeat detection):
+1. The SmartSNPs-filtered data were summarized using the Summarize_SNPs.pl script. This produces a convenient output format allowing manual inspection of the data to identify possible problems (especially calls in repeated regions that escape repeat detection):
 ```bash
 perl Summarize_SNPs.pl CHR1CHR2CHR5_FINAL > Chr1Ch2Chr5_sites.txt
 ```
