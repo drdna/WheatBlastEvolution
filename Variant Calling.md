@@ -61,6 +61,15 @@ perl GATKviSNPcaller.pl samples.list Chr1Chr2Chr5_sites.txt B71v5_SNPs > Chr1Chr
 ```
 3.   Any differences (either in variant positions and/or which samples possessed a given variant) were investigated to identify the reason for the discrepancy. Confirmed "problem" sites were recorded in a "disallowed-sites" file (for false calls), or in a "add-back" file (for legitimate calls filtered out by the SmartSNPs script). The SNP call dataset was then updated using the Summarize_SNPs_no_dodgy.pl script:
 ```bash
-perl Summarize_SNPs_no_dodgy.pl CHR1CHR2CHR5_VCFs
+perl Summarize_SNPs_no_dodgy.pl CHR1CHR2CHR5_VCFs > Chr1Chr2Chr5_final.txt
 ```
-4. 
+4. Finally, the Create_nexus_alignment.pl script was used to generate a sequence alignment file (in nexus format), taking into account the reference base at each position, as well as alignment information (yes/no) across the site in question.
+```bash
+perl Create_fasta_alignment.pl Chr1Chr2Chr5_final.txt ALIGNSTRINGS
+```
+This produced the alignment file: Chr1Chr2Chr5_final.fasta.
+5. Lastly, date information was appended to each sample identifier using the AddDates.pl script;
+```bash
+perl AddDates.pl samples.txt Chr1Chr2Chr5_final.fasta > Chr1Chr2Chr5_dated.fasta
+```
+The resulting file was imported into BEAUTI to gerenate the BEAST input file.
