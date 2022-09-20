@@ -57,7 +57,7 @@ perl Summarize_SNPs.pl CHR1CHR2CHR5_FINAL > Chr1Ch2Chr5_sites.txt
 (note: inspection of the resulting output file revealed no obvious problems with the dataset)
 3. Next, we used the GATKviSNPcaller.pl script to compare variant calls made using the  "genome assembly x reference genome" strategy versus the "reads x reference genome" approach.
 ```bash
-perl GATKviSNPcaller.pl samples.list Chr1Chr2Chr5_sites.txt B71v5_SNPs > Chr1Chr2Chr5_GATKviSNPs.txt
+perl GATKviSNPcaller.pl samples.txt Chr1Chr2Chr5_sites.txt B71v5_SNPs > Chr1Chr2Chr5_GATKviSNPs.txt
 ```
 3.   Any differences (either in variant positions and/or which samples possessed a given variant) were investigated to identify the reason for the discrepancy. Confirmed "problem" sites were recorded in a "disallowed-sites" file (for false calls), or in a "add-back" file (for legitimate calls filtered out by the SmartSNPs script). The SNP call dataset was then updated using the Summarize_SNPs_no_dodgy.pl script:
 ```bash
