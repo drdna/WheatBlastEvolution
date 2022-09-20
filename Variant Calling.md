@@ -68,7 +68,7 @@ perl Summarize_SNPs_no_dodgy.pl CHR1CHR2CHR5_VCFs > Chr1Chr2Chr5_final.txt
 perl Create_fasta_alignment.pl Chr1Chr2Chr5_final.txt ALIGNSTRINGS
 ```
 This produced the alignment file: Chr1Chr2Chr5_final.fasta.
-5. Lastly, date information was appended to each sample identifier using the AddDates.pl script;
+5. Lastly, date information was appended to each sample identifier using the AddDates.pl script:
 ```bash
 perl AddDates.pl samples.txt Chr1Chr2Chr5_final.fasta > Chr1Chr2Chr5_dated.fasta
 ```
