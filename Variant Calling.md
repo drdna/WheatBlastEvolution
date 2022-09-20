@@ -48,5 +48,19 @@ for f in `ls FASTQ_DIRECTORY/*_1.fastq.gz | awk -F '/|_' '{print $3}`; do sbatch
 ```bash
 for f in `ls VCF_FILES/*vcf`; do SmartSNPs.pl B71_ALIGN_STRINGs/B71.B71_alignments $f 20 10; done   # alt:ref ratio >= 20; read coverage >= 10
 ```
-4. The resulting filtered files were cross-referenced against the iSNPcaller calls using the [BWT2-GATK.pl](/scripts/.pl) script and any sites that were not in perfect correspondence (i.e. same SNP called in same set of strains) were further investigated by examining the raw read data to determine the reason for incongruencies, and the SNP call dataset was corrected as indicated (site rejected, or missed calls added).
 
+## Manual filtering based on comparison between iSNPcaller and BWT/GATK variant datasets
+1. The SmartSNPs-filtered data were summarized using the Summarize_SNPs.pl script which produced a convenient format for manual inspection of the data to identify possible problems (especially calls in repeated regions that escape repeat detection):
+```bash
+perl Summarize_SNPs.pl CHR1CHR2CHR5_FINAL > Chr1Ch2Chr5_sites.txt
+```
+(note: inspection of the resulting output file revealed no obvious problems with the dataset)
+3. Next, we used the GATKviSNPcaller.pl script to compare variant calls made using the  "genome assembly x reference genome" strategy versus the "reads x reference genome" approach.
+```bash
+perl GATKviSNPcaller.pl samples.list Chr1Chr2Chr5_sites.txt B71v5_SNPs > Chr1Chr2Chr5_no_dodgy.txt
+```
+3.   Any differences (either in variant positions and/or which samples possessed a given variant) were investigated to identify the reason for the discrepancy. Confirmed "problem" sites were recorded in a "disallowed-sites" file (for false calls), or in a "add-back" file (for legitimate calls filtered out by the SmartSNPs script). The SNP call dataset was then updated using the Summarize_SNPs_no_dodgy.pl script:
+```bash
+perl Summarize_SNPs_no_dodgy.pl CHR1CHR2CHR5_VCFs
+```
+4. 
