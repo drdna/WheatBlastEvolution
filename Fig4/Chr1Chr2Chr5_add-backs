@@ -1,0 +1,23 @@
+# list created by semi-automated checking of genotype fields in individual (filtered) vcf files
+# sample code: for f in `awk '$1 ~ /^chr2/ {print $2}' Chr1Chr2Chr5_sites.txt`; do echo $f; grep $f CHR2_FINAL/*SSfilter.vcf | awk -v var="$f" '$2 == var' | grep FAIL; done
+
+chr1	2383221	CHW GG11
+chr1	2650654	GG11
+chr1	2704688	GG11
+chr1	2856696	GG11
+chr1	2941683	GG11
+chr1	3363036 BdJes GG11 
+
+chr2	747717	GG11
+chr2	1118716	GG11
+chr2	1347019	BdJes BdMeh
+
+
+chr5	312114	Po221
+chr5	324903	Po221
+chr5    1154996 BdMag CHW 
+chr5    1303533 BdJes TP2
+chr5	1773422	TF15-1
+chr5	1773423	TF15-1
+
+

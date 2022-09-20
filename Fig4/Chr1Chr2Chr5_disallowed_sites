@@ -1,0 +1,56 @@
+# list created by semi-automated checking of genotype fields in individual (filtered) vcf files
+# sample code: for f in `awk '$1 ~ /^chr2/ {print $2}' Chr1Chr2Chr5_sites.txt`; do echo $f; grep $f CHR2_FINAL/*SSfilter.vcf | awk -v var="$f" '$2 == var' | grep FAIL; done
+Chromosome	site	reason_for_drop
+chr1    2352613	REP
+chr1	2383221	REP
+chr1	2426582 HET
+chr1	2512403	HET
+chr1	2554903	HET
+chr1	2572963	LO
+chr1	2620810	HET/LO
+chr1	2634001	HET/LO
+chr1	2720769	HET
+chr1	2765025	2PoE1
+chr1	2773219	HET/LO
+chr1	2800309	HET/LO
+chr1	2840913	HET
+chr1	2856696	2PoE1
+chr1	2871313	HET
+chr1	2922239	HET
+chr1	2934250 2PoE1
+chr1	2941683	HET
+chr1	2934350	2PoE1
+chr1	3006473	HET/LO
+chr1	3032451	HET/LO
+chr1	3032955	B71(2PoE1)
+chr1	3033991 2PoE1
+chr1	3053290	LO
+chr1	3058847	HET
+chr1	3059873	HET
+chr1	3084694	HET
+chr1	3118502	HET
+chr1	3118508	REPEAT
+chr1	3118514	REPEAT
+chr1	3129369	LO
+chr1	3135295	HET/LO
+chr1	3135695 HET/LO
+chr1	3155454	HET/LO
+chr1	3363036	B71(2PoE1)
+chr1	3390488	B71(2PoE1)
+
+chr2	637018	HET
+chr2	649724	HET
+chr2	993504	HET
+chr2	993519	HET
+chr2	1323214	2PoE1
+chr2	1338396	HET
+
+chr5    456540 HET
+chr5	864451	HET
+chr5	951545	HET/LO
+chr5	1259642	HET
+chr5	1426767	HET
+chr5	1636373 HET
+chr5	1869329	HET
+chr5	1887562	HET
+chr5	1887653	HET
