@@ -16,7 +16,7 @@ python ARGweaver.py SMC_trees > Chr2ARGtrees.txt
 ## Creation of a TangleGram representing the tree sequence
 1. Generate a lookup file listing indexes for each strain:
 ```bash
-for f in {1..21}; do zgrep '' SMC_trees2/Chr2ARGvalidSkip4.0.smc.gz | head -1 | awk -v var="$f" '{print $(var+1) "\t" var-1}' >> ARGstrain_lookup.txt; done
+for f in {1..21}; do zgrep '' SMC_trees/Chr2ARGvalidSkip4.0.smc.gz | head -1 | awk -v var="$f" '{print $(var+1) "\t" var-1}' >> ARGstrain_lookup.txt; done
 ```
 2. The TangleGram.py script was then used to create a tanglegram for the chromosome 2 tree sequence:
 ```bash
