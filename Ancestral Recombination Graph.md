@@ -21,7 +21,7 @@ Patristic distances between every taxon pair were extracted for each of the 200 
 ```bash
 python tipDistances_multi.py > Chr2ARGdistances.txt
 ```
-Next, the distances between each PoT/PoL isolates and the nearest donor isolate were extracted using the [tipDistancesPoTPoL.pl](/scripts/tipDistancesPoTPoL.pl) script:
+Next, the distances between each PoT/PoL isolate and its nearest donor were extracted using the [tipDistancesPoTPoL.pl](/scripts/tipDistancesPoTPoL.pl) script:
 ```bash
 perl tipDistancesPoTPoL.pl Chr2ARGdistances.txt > Chr2ARGPoTPoLdistances.txt
 ```
