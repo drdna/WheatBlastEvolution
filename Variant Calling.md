@@ -38,33 +38,33 @@ cd ..
 perl Run_SU4.pl B71v5_BLAST B71v5_SNPs
 ```
 ## SNPcalling against the B71 reference genome using GATK:
-SNPs were called using a standard Bowtie2/GATK pipeline using the [BTW2-GATK.sh](/scripts/BWT2-GATK.sh) SLURM script. The variant call format file was then filtered to remove: i) sites that occurred in repeat regions of the reference genome (to ensure that all calls were between allelic loci); ii) heterozygous calls (alt:ref ratio < 20; to avoid calling variants between non allelic loci, due to repeat regions in the query genome); and iii) variant calls with low coverage (DP < 10; usually false calls caused by poor sequence quality in homopolymer tracts).
+SNPs were called using a standard Bowtie2/GATK pipeline using the [BWT2-GATK.sh](/scripts/BWT2-GATK.sh) SLURM script. The variant call format file was then filtered to remove: i) sites that occurred in repeat regions of the reference genome (to ensure that all calls were between allelic loci); ii) heterozygous calls (alt:ref ratio < 20; to avoid calling variants between non allelic loci, due to repeat regions in the query genome); and iii) variant calls with low coverage (DP < 10; usually false calls caused by poor sequence quality in homopolymer tracts).
 
 1. The B71 reference genome was indexed using bowtie2-build:
 ```bash
 bowtie2-build B71.fasta B71_index/B71
 ```
-2. Sequence reads were aligned using bowtie2 and genotyping was performed using GATK using the [BWT2-GATK.sh](/scripts/BWT2-GATK.sh) SLURM script.
+2. Sequence reads were aligned using bowtie2 and genotyping was performed using GATK using the [BWT2-GATK.sh](/scripts/bowtieGATK/BWT2-GATK.sh) SLURM script.
 ```bash
 for f in `ls FASTQ_DIRECTORY/*_1.fastq.gz | awk -F '/|_' '{print $3}`; do sbatch BWT2-GATK.sh B71.fasta FASTQ_DIRECTORY $f; done
 ```
 ## Filtering to remove false SNP calls
-3. The "snps-only" VCF files were copied into a new directory and illegal SNP calls were then filtered out using the [SmartSNPs.pl](/scripts/SmartSNPs.pl) script:
+3. The "snps-only" VCF files were copied into a new directory and illegal SNP calls were then filtered out using the [SmartSNPs.pl](/scripts/bowtieGATK/SmartSNPs.pl) script:
 ```bash
 for f in `ls VCF_FILES/*vcf`; do SmartSNPs.pl B71_ALIGN_STRINGs/B71.B71_alignments $f 20 10; done   # alt:ref ratio >= 20; read coverage >= 10
 ```
 
 ## Manual filtering based on comparison between iSNPcaller and BWT/GATK variant datasets
-1. The SmartSNPs-filtered data were summarized using the [Summarize_SNPs.pl](/scripts/Summarize_SNPs.pl) script. This produces a convenient output format allowing manual inspection of the data to identify possible problems (especially calls in repeated regions that escape repeat detection):
+1. The SmartSNPs-filtered data were summarized using the [Summarize_SNPs.pl](/scripts/bowtieGATK/Summarize_SNPs.pl) script. This produces a convenient output format allowing manual inspection of the data to identify possible problems (especially calls in repeated regions that escape repeat detection):
 ```bash
 perl Summarize_SNPs.pl CHR1CHR2CHR5_FINAL > Chr1Ch2Chr5_sites.txt
 ```
 (note: inspection of the resulting output file revealed no obvious problems with the dataset)
-3. Next, we used the [GATKviSNPcaller.pl](/scripts/GATKviSNPcaller.pl) script to compare variant calls made using the  "genome assembly x reference genome" strategy versus the "reads x reference genome" approach.
+3. Next, we used the [GATKviSNPcaller.pl](/scripts/bowtieGATK/GATKviSNPcaller.pl) script to compare variant calls made using the  "genome assembly x reference genome" strategy versus the "reads x reference genome" approach.
 ```bash
 perl GATKviSNPcaller.pl samples.txt Chr1Chr2Chr5_sites.txt B71v5_SNPs > Chr1Chr2Chr5_GATKviSNPs.txt
 ```
-3.   Any differences (either in variant positions and/or which samples possessed a given variant) were investigated to identify the reason for the discrepancy. Confirmed "problem" sites were recorded in a "disallowed-sites" file (for false calls), or in a "add-back" file (for legitimate calls filtered out by the SmartSNPs script). The SNP call dataset was then updated using the [Summarize_SNPs_no_dodgy.pl](/scipts/Summarize_SNPs_no_dodgy.pl) script:
+3.   Any differences (either in variant positions and/or which samples possessed a given variant) were investigated to identify the reason for the discrepancy. Confirmed "problem" sites were recorded in a "disallowed-sites" file (for false calls), or in a "add-back" file (for legitimate calls filtered out by the SmartSNPs script). The SNP call dataset was then updated using the [Summarize_SNPs_no_dodgy.pl](/scripts/bowtieGATK/Summarize_SNPs_no_dodgy.pl) script:
 ```bash
 perl Summarize_SNPs_no_dodgy.pl CHR1CHR2CHR5_VCFs > Chr1Chr2Chr5_final.txt
 ```
