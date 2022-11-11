@@ -1,9 +1,9 @@
 # Variant Calling
-Standard SNP callers fail to detect repetitive portions of fungal genomes which results in the reporting of false variants between non-allelic sequences. Repeat-masking programs also miss large numbers of repeated sequences. To address these problem we built a BLAST-based SNP caller that pre-masks  all repeats in the reference and query genomes before alignment, and then performs a second round of masking after alignment to screen out "cryptic" repeats that are not detected using genome self-comparison. Our program, [iSNPcaller_MT.sh](/scripts/iSNPcaller_MT.sh) works in an incremental fashion where newly added genomes are first compared with one another, and then with those that have been previously analyzed.
+Standard SNP callers fail to detect repetitive portions of fungal genomes which results in the reporting of false variants between non-allelic sequences. Repeat-masking programs also miss large numbers of repeated sequences. To address these problem we built a BLAST-based SNP caller that pre-masks  all repeats in the reference and query genomes before alignment, and then performs a second round of masking after alignment to screen out "cryptic" repeats that are not detected using genome self-comparison. Our program, [iSNPcaller_MT.pl](/scripts/pairwiseVariantCalling/iSNPcaller_MT.pl) works in an incremental fashion where newly added genomes are first compared with one another, and then with those that have been previously analyzed.
 
 ## Creating standardized headers for genome assemblies
 
-The fasta headers in each genome assembly were converted to a standard format:
+The fasta headers in each genome assembly were converted to a standard format using [SimpleFastaHeaders_SB.pl] (/scripts/pairwiseVariantCalling/SimpleFastaHeaders_SB.pl):
 ```bash
 perl SimpleFastaHeaders_SB.pl RAW_GENOMEs
 ```
