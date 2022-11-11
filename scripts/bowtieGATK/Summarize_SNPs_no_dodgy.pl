@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-die "Usage: Summarize_snps.pl <VCF-dir>\n" if @ARGV < 1;
+die "Usage: Summarize_SNPs_no_dodgy.pl <VCF-dir>\n" if @ARGV < 1;
 
 die "Program expects a DIRECTORY as argument\n" unless -d $ARGV[0];
 
@@ -58,7 +58,7 @@ sub CUT_SITES {
 sub ADD_BACK_STRAINS {
 
 
-  # open list of strains to add to variant sites lists (usually filtered out due to poor coverage)
+  # open list of manually-validated variant sites to add back after SmartSNPs filtering and record of strains that contain the validated variants (usually filtered out due to poor coverage)
 
   open(ADD, "Chr1Chr2Chr5_add-backs") || die "Can't find Chr1Chr2Chr5_add-backs file\n";
 
@@ -90,7 +90,7 @@ sub READ_SITES_LIST {
 
   foreach $file (@filesList) {
 
-    next if $file =~ /PY6025|PY6047|BdJes|T7-3|Py5020/;
+    next if $file =~ /PY6025|PY6047|BdJes|T7-3|Py5020/;    # skip over datasets with poor genotype quality
 
     next unless $file =~ /SSfilter/;
 
@@ -104,9 +104,9 @@ sub READ_SITES_LIST {
 
   foreach $file (@filesList) {
 
-    next if $file =~ /PY6025|PY6047|BdJes|T7-3|Py5020/;
+    next if $file =~ /PY6025|PY6047|BdJes|T7-3|Py5020/;  # skip over datasets with poor genotype quality
 
-    next unless $file =~ /SSfilter/;
+    next unless $file =~ /SSfilter/;                     # ony process SmartSNPs outputs
 
     open(F, "$ARGV[0]/$file")|| die "Can't open file\n";
 
