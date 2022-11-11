@@ -68,7 +68,7 @@ perl GATKviSNPcaller.pl samples.txt Chr1Chr2Chr5_sites.txt B71v5_SNPs > Chr1Chr2
 ```bash
 perl Summarize_SNPs_no_dodgy.pl CHR1CHR2CHR5_VCFs > Chr1Chr2Chr5_final.txt
 ```
-4. Finally, the [Create_fasta_alignment.pl](/scripts/Create_fasta_alignment.pl) script was used to generate a sequence alignment file (in nexus format), taking into account the reference base at each position, as well as alignment information (yes/no) across the site in question.
+4. Finally, the [Create_fasta_alignment.pl](/scripts/Create_fasta_alignment.pl) script was used to generate a sequence alignment file, taking into account the reference base at each position, as well as alignment information (yes/no) across the site in question.
 ```bash
 perl Create_fasta_alignment.pl Chr1Chr2Chr5_final.txt ALIGNSTRINGS
 ```
