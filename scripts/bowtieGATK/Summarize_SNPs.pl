@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-die "Usage: Summarize_snps.pl <VCF-dir>\n" if @ARGV < 1;
+die "Usage: Summarize_SNPs.pl <VCF-dir>\n" if @ARGV < 1;
 
 die "Program expects a DIRECTORY as argument\n" unless -d $ARGV[0];
 
