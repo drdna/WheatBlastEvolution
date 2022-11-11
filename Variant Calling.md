@@ -3,7 +3,7 @@ Standard SNP callers fail to detect repetitive portions of fungal genomes which 
 
 ## Creating standardized headers for genome assemblies
 
-The fasta headers in each genome assembly were converted to a standard format using [SimpleFastaHeaders_SB.pl] (/scripts/pairwiseVariantCalling/SimpleFastaHeaders_SB.pl):
+The fasta headers in each genome assembly were converted to a standard format using [SimpleFastaHeaders_SB.pl](/scripts/pairwiseVariantCalling/SimpleFastaHeaders_SB.pl):
 ```bash
 perl SimpleFastaHeaders_SB.pl RAW_GENOMEs
 ```
