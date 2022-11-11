@@ -2,7 +2,7 @@
 
 # Generates dataset listing alleles at SNP sites that are called in ALL strains
 
-die "Usage: Create_fasta_dataset.pl <SNP-dataset> <align-string-directory\n" if @ARGV != 2;
+die "Usage: Create_fasta_alignment.pl <SNP-dataset> <align-string-directory\n" if @ARGV != 2;
 
 use FetchGenome;
 
