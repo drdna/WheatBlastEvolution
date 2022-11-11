@@ -38,7 +38,7 @@ cd ..
 perl Run_SU4.pl B71v5_BLAST B71v5_SNPs
 ```
 ## SNPcalling against the B71 reference genome using GATK:
-SNPs were called using a standard Bowtie2/GATK pipeline using the [BWT2-GATK.sh](/scripts/BWT2-GATK.sh) SLURM script. The variant call format file was then filtered to remove: i) sites that occurred in repeat regions of the reference genome (to ensure that all calls were between allelic loci); ii) heterozygous calls (alt:ref ratio < 20; to avoid calling variants between non allelic loci, due to repeat regions in the query genome); and iii) variant calls with low coverage (DP < 10; usually false calls caused by poor sequence quality in homopolymer tracts).
+SNPs were called using a standard Bowtie2/GATK pipeline using the [BWT2-GATK.sh](/scripts/bowtieGATK/BWT2-GATK.sh) SLURM script. The variant call format file was then filtered to remove: i) sites that occurred in repeat regions of the reference genome (to ensure that all calls were between allelic loci); ii) heterozygous calls (alt:ref ratio < 20; to avoid calling variants between non allelic loci, due to repeat regions in the query genome); and iii) variant calls with low coverage (DP < 10; usually false calls caused by poor sequence quality in homopolymer tracts).
 
 1. The B71 reference genome was indexed using bowtie2-build:
 ```bash
@@ -49,7 +49,7 @@ bowtie2-build B71.fasta B71_index/B71
 for f in `ls FASTQ_DIRECTORY/*_1.fastq.gz | awk -F '/|_' '{print $3}`; do sbatch BWT2-GATK.sh B71.fasta FASTQ_DIRECTORY $f; done
 ```
 ## Filtering to remove false SNP calls
-3. The "snps-only" VCF files were copied into a new directory and illegal SNP calls were then filtered out using the [SmartSNPs.pl](/scripts/bowtieGATK/SmartSNPs.pl) script:
+3. The "snps-only" VCF files were copied into a new directory and illegal SNP calls were then filtered out using the [SmartSNPsV2.pl](/scripts/bowtieGATK/SmartSNPsV2.pl) script:
 ```bash
 for f in `ls VCF_FILES/*vcf`; do SmartSNPs.pl B71_ALIGN_STRINGs/B71.B71_alignments $f 20 10; done   # alt:ref ratio >= 20; read coverage >= 10
 ```
