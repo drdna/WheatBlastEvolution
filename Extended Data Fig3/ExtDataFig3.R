@@ -3,9 +3,12 @@ library("poppr")
 library("RColorBrewer")
 
 n <- 20
+
 palette <- distinctColorPalette(n)
 
-df <- read.table("~/SCIENCE_DATA/STRUCTURE/StructureIn.str", row.names = 1, header = FALSE) # StructureIn.str is OK
+# Read input data in STRUCTURE format
+
+df <- read.table("~/StructureIn.str", row.names = 1, header = FALSE)
 
 D <- df2genind(df, ncode = 1, ploidy = 1, NA.char = "-9")
 
@@ -13,11 +16,11 @@ PS <- popsub(D)
 
 PC <- find.clusters(PS, max.n.clust = 30, n.iter = 1e6)
 
-# PC: Chose 80 PCs for this analysis
+# PC: Chose 80 principle components for this analysis
 
 maxK <- 30
 
-# nrow specifies # iterations for BIC distribution analysis
+# nrow specifies number of iterations for BIC distribution analysis
 
 myMat <- matrix(nrow=10, ncol=maxK)
 colnames(myMat) <- 1:ncol(myMat)
@@ -26,7 +29,7 @@ for(i in 1:nrow(myMat)){
   myMat[i,] <- grp$Kstat
 }
 
-# Plot distribution of K after 
+# Plot the BIC distributions at different values of K (Ext. Data Fig. 3A)
 
 library(ggplot2)
 library(reshape2)
@@ -69,7 +72,7 @@ p2 <- p2 + scale_fill_manual(values=c(paste(my_pal, "66", sep = "")))
 p2
 
 
-# Plot the cluster memberships (Fig. 3B)
+# Plot the cluster memberships (Ext. Data Fig. 3B)
 
 tmp <- as.data.frame(dapc_l[[1]]$posterior)
 tmp$K <- my_k[1]
