@@ -17,7 +17,7 @@ library(gridExtra)
 
 getPalette = colorRampPalette(brewer.pal(9, "Set1"))
 
-# grab initial dataset
+# grab a dataset from the ShinyHaplotypes output folder
 
 df <- read.table(paste("~/SLIDES/", "chr1", ".", "ATCC64557", ".diffs", sep = ""), header = TRUE, row.names = 1, check.names = FALSE)
 
@@ -47,8 +47,7 @@ lineages <- c("B1", "B2", "B3", "B4", "C", "Ec",  "E1", "E2", "E3", "Er", "Ha", 
               "L2", "L3", "Le", "Lee", "Lu", "M", "O", "P", "Pan", "S", "St", "T", "U")
 
 
-# specify clade colors
-
+# specify clade colors using old lineage identifiers (B was Brachiaria, now Urochloa; P was Paspalum, now Panicum)
 
 #colors <- c(B1= "#0000FF", B2="#4169E1", B3= "#7B68EE", B4= "#87CEFA", C="#00FF00", Ec="#669999", 
 #            E1= "#bf80ff", E2="#9999ff", E3="#CC99FF", Er="#CC6666", Ha = "#32cc99", 
