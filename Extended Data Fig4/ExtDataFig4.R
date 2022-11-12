@@ -81,20 +81,18 @@ for (f in 1:7) {
   
   
   # uncomment/modify next line to select specific strain comparisons
-  #df2 <- df %>% rownames_to_column('Strains') %>% filter(., Strains %in% c("ATCC64577", "CHRF", "Ds555i", "PtKY18-1", "PL3-1", "TF05-1", "PY86", "pg1213-22", "P25", "P28", "U234", "T47-3", "T42-2", "T12-8", "T2-1", "T21-1", "T13-3", "T37-2", "T50-3", "Br7", "Br80", "Py221", "T46-2", "PY6017", "BR118", "Br130", "P3", "PY5033", "PY36", "PY0925", "WB032i" ))
-  df2 <- df %>% rownames_to_column('Strains') %>% filter(., clade %in% c("U1", "U2", "U3", "E1", "E2", "E3", "Er", "H", "L2", "Le", "Lee", "Lu", "M", "O", "P", "P2", "S", "St", "U"))
-  # uncomment/modify next line for specific lineage comparisons
-  #df2 <- df %>% rownames_to_column('Strains') %>% filter(., clade %in% c("L", "T"))
+  df2 <- df %>% rownames_to_column('Strains') %>% filter(., clade %in% c("U1", "U2", "U3", "E1", "E2",
+                                                                         "E3", "Er", "H", "L2", "Le",
+                                                                         "Lee", "Lu", "M", "O", "P",
+                                                                         "P2", "S", "St", "U"))
   end <- ncol(df2)
-  
   
   # define position of window
   win_pos <- c(1:end)
   colnames(df2) <- win_pos
   df2 <- df2 %>% rownames_to_column('Strains') 
   colnames(df2)[end+1] <- "clade"
-  
-  
+    
   # gather data for plotting
   df3<- df2 %>% select(Strains, clade, win_pos)%>%gather(key = "win_pos", value = "divergence", -Strains, -clade) 
   
@@ -143,8 +141,6 @@ for (f in 1:7) {
   
 }
 
-
-# uncomment next section to print to file
 pdf("B71vAll.pdf", 8.5, 11)
 p<-grid.arrange(grobs = myPlots, ncol = 1, nrow = 7, heights = c(1,1,1,1,1,1,1.2), 
                 top = textGrob("Haplotype Divergence: B71 versus All PoT/PoL1", gp = gpar(fontface = "bold", cex = 1.2)),
