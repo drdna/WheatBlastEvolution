@@ -1,5 +1,6 @@
 ## Plots trees and colors taxa according to lineage affinities
 
+# note: for clarity, some branches were recolored in Illustrator
 
 library(ape)
 library(phangorn)
@@ -35,21 +36,14 @@ options(ignore.negative.edge=TRUE)
 
 Tree2 <- drop.tip(Tree1, "BdBar", subtree=FALSE)
 
-#pdf("PoT_PoL_tree.pdf", 8.5, 11)
-ggtree(Tree1, 
-       layout = "circular", 
-       branch.length='none', 
-       aes(color = group, label = gsub("_.*", "", label)))+
- geom_tiplab(size=4, offset = 1) +
-  scale_color_manual(values = myColors) +
-  guides(col = guide_legend(nrow = 13, width = 5, override.aes = aes(size = 2, label = ""))) +
-  labs(color = "Host Genera")
-#dev.off()
+pdf("PoT_PoL_tree.pdf", 8.5, 11)
+ggtree(Tree1, layout = "circular", branch.length='none', aes(color = group, label = gsub("_.*", "", label))) +
+       geom_tiplab(size=4, offset = 1) +
+       scale_color_manual(values = myColors) +
+       guides(col = guide_legend(nrow = 13, width = 5, override.aes = aes(size = 2, label = ""))) +
+       labs(color = "Host Genera")
+
+dev.off()
 #ggsave("tree.png", dpi = 600, width =10, height =10)
-
-geom_tippoint(aes(color=location), size=3, alpha=.75) +
-  scale_color_brewer("location", palette="Spectral")
-
-
 
 
