@@ -17,7 +17,7 @@ library(gridExtra)
 
 getPalette = colorRampPalette(brewer.pal(9, "Set1"))
 
-# grab a dataset from the ShinyHaplotypes output folder
+# grab a dataset from the ShinyHaplotypes output folder (too large to share through standard data repository)
 
 df <- read.table(paste("~/SLIDES/", "chr1", ".", "ATCC64557", ".diffs", sep = ""), header = TRUE, row.names = 1, check.names = FALSE)
 
