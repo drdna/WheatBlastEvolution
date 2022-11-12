@@ -12,24 +12,11 @@ library(stringr)
 library(readxl)
 library(readr)
 
-#strains <- read_excel("~/Google Drive/1.SCIENCE_WHEAT_BLAST/genotypesFile_Ed copy.xlsx", sheet = "newSet")
-strains <- read_excel("~/Desktop/AUG2022/REVISION2/HaplotypesTable.xlsx", sheet = "Sheet1")
+# read table showing each strain's haplotype affiliation 
+strains <- read_excel("~/HaplotypesTable.xlsx", sheet = "Sheet1")
 
 #strains[is.na(strains)] <- ""
 strains <- select(strains, c(2,3,15))
-#strains$geneo <- paste(strains$Host, strains$genotype, sep = " ")
-
-
-
-
-#strains <- subset(strains, (Geno %in% c( "PoL1-1","PoL1-1","PoL1-1","PoL1-1","PoL1-1","PoL1-1",
-#                                         "PoL1-1","PoT1","PoL1-2", "PoL1-6","PoL1-12","PoL1-13", "PoT1", "PoT4", "PoT32"))) #,
-#"PoL1-9","PoL1-11","PoL1-12", "PoL1-13", "PoT2","PoT3","PoT4","PoT5","PoT6",
-#"PoT7","PoT8","PoT9","PoT10","PoT11", "PoT12","PoT13","PoT14","PoT15","PoT16",
-#"PoT17","PoT18","PoT19","PoT20","PoT21", "PoT23","PoT24","PoT25","PoT26","PoT27",
-#"PoT29","PoT30","PoT31","PoT32", "PoT34")))
-
-
 
 strains <- subset(strains, (Geno %in% c( "PoL1-1","PoT1","PoL1-2","PoL1-3","PoL1-4","PoL1-5","PoL1-6","PoL1-7","PoL1-8",
                                          "PoL1-9","PoL1-11","PoL1-12", "PoL1-13", "PoT2","PoT3","PoT4","PoT5","PoT6",
@@ -37,11 +24,10 @@ strains <- subset(strains, (Geno %in% c( "PoL1-1","PoT1","PoL1-2","PoL1-3","PoL1
                                          "PoT17","PoT18","PoT19","PoT20","PoT21", "PoT23","PoT24","PoT25","PoT26","PoT27",
                                          "PoT29","PoT30","PoT31","PoT32", "PoT34")))
 
-file.dir <- "~/CPtest/"
+file.dir <- "~/CPtest/"   # point to directory containing ChromoPainter input files
 setwd(file.dir)
 lengths<- list(6442611, 7903502, 8206720, 5402944, 4443078, 6091895, 4042924)
 
-#Chromosomes <- list("chr2")
 Chromosomes <- list("chr1", "chr2", "chr3", "chr4", "chr5", "chr6", "chr7")
 
 count <- 0
@@ -60,7 +46,8 @@ for(strain in strains$Recipient) {
         dt <- dt %>% mutate(E = E1+E2+E3) 
         dt <- dt %>% mutate(X = Lee+P+O+S+P2)
         dt <- subset(dt, select= c("pos",  "E","Lu", "St", "U1","X"))
-        ################################### choosing the population with the highest copyprobs 2times of the next highest one
+    
+        ################################### choosing the population with the highest copyprobs >=2 times that of next highest one
         process_row = function(line) {
             firstMax = max(line)
             secMax = sort(line, TRUE)[2]
@@ -81,7 +68,8 @@ for(strain in strains$Recipient) {
         new_dt = apply(x, MARGIN = 1, FUN = process_row)
         dt2 = as.data.frame(t(new_dt))
         dt <- as.data.frame(cbind(dt[1], dt2))
-        ###########################################################################################################################################
+    
+      ############################################################################################################################################
       #identify corresponding widths file
       widthsfile <- (gsub("\\.forR.copyprobsperlocus.out$","\\.width.copyprobsperlocus.out", copyprobsfile))
       system2("echo", shQuote(widthsfile))
@@ -136,7 +124,7 @@ for(strain in strains$Recipient) {
   count <- 0 
 }  
 
-  d_circle=data.table::rbindlist(tabless, fill = T)
+d_circle=data.table::rbindlist(tabless, fill = T)
 
 ########### make circles for 7 chrs for each strains
 df <- subset(d_circle, value != 0) 
@@ -153,10 +141,9 @@ df2 <- subset(df2, select = -c(Recipient, date))
 #Changing Chr to Chromosome
 df2$Chr <- gsub("Chr", "Chromosome ", df2$Chr)
 
-
 df2 <- as.data.frame(df2)
 
-#df2 <- read.csv("~/Google Drive/1.NATURE_GENETICS/Fig4/Final Figure/Others/DF_for_Fig4_Final_Final.csv")
+#df2 <- read.csv("~/DF_for_Fig4_Final_Final.csv")
 df2 <- merge(df2, strains, by = "Geno")
 
 df2$Subset = factor(df2$StrainDate, #levels = unique(str_sort(df2$StrainDate, numeric = TRUE)))
@@ -177,16 +164,8 @@ levels = c("PoL1-1 (1980)",  "PoT1 (1985)", "PoL1-2 (1988)",  "PoL1-3 (1990)",
 colors <- c( 'E' = "#009E73",Lu= "#999999", St= "#AA4499", U1 = "#D55E00", X= "#0072B2") 
 
 ppi <- 300
-#tiff(file=paste("~/Google Drive/1.NATURE_GENETICS/Fig4/Final Figure/Fig4_Final_Final_withStrain",".tiff", sep = ''), 
-#     width = 14*ppi, height= 7.8*ppi, res = ppi) 
-pdf(file=paste("~/Fig3-1",".pdf", sep = ''), width = 20, height= 8.5) 
 
-# subsample dataset every fifth line
-#df2$variable <- df2$variable/1000000
-
-#df2$variable <- round(df2$variable, 1)
-
-#df2 <- df2[!duplicated(c(df2$variable)), ]
+pdf(file=paste("~/Fig3",".pdf", sep = ''), width = 20, height= 8.5) 
 
 print(
   ggplot(df2) +   #subset(df, Recipient == "ATCC64557") 
