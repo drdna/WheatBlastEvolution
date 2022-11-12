@@ -101,7 +101,6 @@ p3 <- p3 + facet_grid(K ~ . , scales = "free_x", space = "free", labeller = labe
 p3 <- p3 + theme_bw()
 p3 <- p3 + ylab("Posterior membership probability")
 p3 <- p3 + theme(legend.position='none')
-#p3 <- p3 + scale_color_brewer(palette="Dark2")
 p3 <- p3 + scale_fill_manual(values=getPalette(30))
 p3 <- p3 + theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 8))
 p3
