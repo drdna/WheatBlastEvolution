@@ -18,7 +18,7 @@ Tree2 <- read.tree("MPG1noGaps.tre")
 
 cophylo <- cophylo(Tree1, Tree2, assoc=NULL, rotate=TRUE)
 
-pdf("cophylo4.pdf", 24, 44)
+pdf("cophyloPlot.pdf", 24, 44)
 
 plot(cophylo)
 
