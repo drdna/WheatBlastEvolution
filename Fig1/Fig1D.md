@@ -3,4 +3,6 @@
 ```bash
 perl Pairwise_distances_boxplot.pl boxplot.strain.idfile AllSNPCountsJan2021.txt > PairwiseDistances.txt
 ```
-2. The resulting [PairwiseDistances.txt](/Fig1/PairwiseDistances.txt) file was used as input to the [Fig1D_PairwiseDistances.R](/Fig1/Fig1D_PairwiseDistances.R) script to create the output plot: [Fig1D_PairwiseDistances.pdf](/Fig1/Fig1D_PairwiseDistances.pdf). 
+2. The resulting [PairwiseDistances.txt](/Fig1/PairwiseDistances.txt) file was used as input to the [Fig1D_PairwiseDistances.R](/Fig1/Fig1D_PairwiseDistances.R) script to create the output plot: 
+ 
+[Fig1D_PairwiseDistances.png](/Fig1/Fig1D_PairwiseDistances.png). 
