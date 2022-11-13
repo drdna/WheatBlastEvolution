@@ -3,6 +3,8 @@
 ## written by M. Farman
 ## 09/29/2020
 
+# reads output files from the iSNPcaller output directory ("SNPcounts")
+
 print "Usage: perl Pairwise_matrix_MEGA_boxplot.pl <idlist> <SNPcounts>\n" if @ARGV != 2;
 
 open(STRAINIDs, $ARGV[0]);
