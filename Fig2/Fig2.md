@@ -1,5 +1,5 @@
 ## Generation of Figure 2:
-1. Use the shell script, Run_CP.sh, to run ChromoPainter, followed by the [ChromoPainter_to_R.pl](/Fig2/ChromoPainter_to_R.pl] script to generate suitable inputs for R. Corresponding "widths" files are also generated that include distances between adjacent SNP sites, so that stacked bars to be plotted without gaps between them:
+1. Use the shell script, Run_CP.sh, to run ChromoPainter, followed by the [ChromoPainter_to_R.pl](/Fig2/ChromoPainter_to_R.pl) script to generate suitable inputs for R. Corresponding "widths" files are also generated that include distances between adjacent SNP sites, so that stacked bars to be plotted without gaps between them:
 ```bash
 ./Run_CP.sh
 ```
