@@ -9,7 +9,7 @@ vec <- list.files("~/NEE_SHINY/")
 ```
 ```bash
 df <- read.table(paste("~/NEE_SHINY/", "Chr1", ".", "ATCC64557", ".diffs", sep = ""), header = TRUE, row.names = 1, check.names = FALSE)
-
+```
 2. Run the script to generate the figure:
 
 ![B71vPoTPoL.tiff](/Fig3/B71vPoTPoL.tiff)
