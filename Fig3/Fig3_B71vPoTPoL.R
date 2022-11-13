@@ -11,35 +11,6 @@ library(tibble)  # for `rownames_to_column` and `column_to_rownames`
 library(magrittr)
 library(grid)
 library(gridExtra)
-#library("pandas")
-
-# read in color set
-
-getPalette = colorRampPalette(brewer.pal(9, "Set1"))
-
-# grab initial dataset
-
-df <- read.table(paste("~/NEE_SHINY/", "Chr1", ".", "ATCC64557", ".diffs", sep = ""), header = TRUE, row.names = 1, check.names = FALSE)
-df <- df[-ncol(df)]
-
-
-# grab a list of strain IDs
-
-strains <- row.names(df)
-
-strains[[length(strains)+1]] <- "ATCC64557"
-
-sstrains <- sort(strains)
-
-
-# grab a list of chromosome IDs
-
-vec <- list.files("~/NEE_SHINY/")
-
-vec <- gsub("\\..*", "", vec)
-
-chromosomes <- unique(vec)
-
 
 # read a list of clade names
 
