@@ -1,12 +1,5 @@
 #!/usr/bin/perl
 
-
-## Add subroutine to count N's in columns and filter columns if there are too many.
-
-## Easily done by splicing @Genotype array
-
-## Just iterate through the outfiles twice: count first, filter & print second
-
 ##############################
 #
 # Generate_ARGsites.pl
