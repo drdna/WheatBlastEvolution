@@ -4,12 +4,9 @@ i) point to the strain.idfile in the ChromoPainter input directory:
 ```bash
 cladeName <- read.table("~/strain.idfile", header = FALSE)
 ```
-ii) point to the ShinyHaplotypes output directory (in two places):
+ii) point to a targetfile the ShinyHaplotypes output directory
 ```bash
-vec <- list.files("~/NEE_SHINY/")
-```
-```bash
-df <- read.table(paste("~/NEE_SHINY/", "Chr1", ".", "ATCC64557", ".diffs", sep = ""), header = TRUE, row.names = 1, check.names = FALSE)
+df <- read.table(paste("~/NEE_SHINY/", f, ".", "B71", ".diffs", sep = ""), header = TRUE, row.names = 1, check.names = FALSE)
 ```
 2. Run the script to generate the figure:
 
