@@ -590,8 +590,8 @@ def plot_pair(tree_file1,tree_file2,fig_name,tree_labels=None):
 
 if  __name__ == '__main__':
 
-    """ new code block
-    """
+    "code in following block modified by M. Farman to allow command line arguments"
+   
     strain_dict = dict([])
     strain_map = sys.argv[1]
     with open(strain_map) as file:
