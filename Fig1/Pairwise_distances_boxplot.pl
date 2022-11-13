@@ -5,7 +5,7 @@
 
 # reads pairwise distance data from iSNPcaller's "SNPcounts" output file 
 
-print "Usage: perl Pairwise_matrix_MEGA_boxplot.pl <idlist> <SNPcounts>\n" if @ARGV != 2;
+print "Usage: perl Pairwise_distances_boxplot.pl boxplot.strain.idlist AllSNPcountsJan2021.txt\n" if @ARGV != 2;
 
 open(STRAINIDs, $ARGV[0]);
 
