@@ -3,6 +3,9 @@
 ```bash
 ./Run_CP.sh
 ```
-2. Fig2A was generated using the [Fig2A_B71_ChromoPaint.R](/Fig2/Fig2A_B71_ChromoPaint.R) script to point to the directory [Out_3](/Fig2/Out_3.tar.gz) that contiain the output files the The copyprobs output file from ChromoPainter was used to generate a suitable input for R, along with a corresponding "widths" file that includes distances between adjacent SNP sites to allow stacked bars to be plotted without gaps between them:
+2. Fig2A was generated using the [Fig2A_B71_ChromoPaint.R](/Fig2/Fig2A_B71_ChromoPaint.R) script to point to the ChromoPainter "forR" and "widths" output files, [Out_3](/Fig2/Out_3.tar.gz):
+
+![Fig2A.pdf](/Fig2/Fig2A.pdf)
+
 ```bash
 for f in `ls perl 
