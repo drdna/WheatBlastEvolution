@@ -5,7 +5,7 @@
 ```
 2. Fig2A was generated using the [Fig2A_B71_ChromoPaint.R](/Fig2/Fig2A_B71_ChromoPaint.R) script to point to the ChromoPainter "forR" and "widths" output files, [Out_3](/Fig2/Out_3.tar.gz):
 
-![Fig2A.pdf](/Fig2/Fig2A.pdf)
+![Fig2A.tiff](/Fig2/Fig2A.tiff)
 
 ```bash
 for f in `ls perl 
