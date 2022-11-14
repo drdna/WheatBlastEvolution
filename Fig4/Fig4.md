@@ -1,5 +1,5 @@
 ## Fig4
-1. Use the 
+1. Use the [ChromoPaint_to_R_compressed.pl](/Fig4/ChromoPaint_to_R_compressed.pl) script to compress the dataset by removing redundant datapoints. This is necessary to generate a ChromoPainting output file with a manageable size . 
 2. Modify the [Fig4_ChromoPaint.R](/Fig4/Fig4_ChromoPaint.R) script to:
 i) point to the HaplotypesTable.xlsx spreadsheet that lists haplotype designations for each strain:
 ```bash
