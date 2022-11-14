@@ -1,8 +1,8 @@
 ## Fig4
 1. Modify the [Fig4_ChromoPaint.R](/Fig4/Fig4_ChromoPaint.R) script to:
-i) point to the strain.idfile in the ChromoPainter input directory:
+i) point to the HaplotypesTable.xlsx spreadsheet that lists haplotype designations for each strain:
 ```bash
-cladeName <- read.table("~/strain.idfile", header = FALSE)
+strains <- read_excel("~/HaplotypesTable.xlsx", sheet = "Sheet1")
 ```
 ii) point to target files in the ShinyHaplotypes output directory
 ```bash
