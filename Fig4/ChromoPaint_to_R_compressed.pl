@@ -6,20 +6,16 @@
 
 $Count = 0;
 
-## open .cp file
+## open copyprobs file
 
 open(FILE, $ARGV[0]);
 
 
-## specify outfile names
+## specify outfile name
 
 $outfile1 = $ARGV[0];
 
-$outfile2 = $ARGV[0];
-
 $outfile1 =~ s/out/out\.forR/;
-
-$outfile2 =~ s/out/out\.width/;
 
 
 ## read in entire file
