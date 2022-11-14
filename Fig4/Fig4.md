@@ -9,6 +9,6 @@ ii) point to the directory containing the down-sampled ChromoPainter output file
 ```bash
 file.dir <- "~/CPtest/"
 ```
-2. Run the script to generate the figure:
+2. Run the R script to generate the figure:
 
 ![Fig4_ChromoPaintings.tiff](/Fig4/Fig4_ChromoPaintings.tiff)
