@@ -12,23 +12,10 @@ library(stringr)
 library(readxl)
 library(readr)
 
-strains <- read_excel("~/Desktop/AUG2022/REVISION2/HaplotypesTable.xlsx", sheet = "Sheet1")
+strains <- read_excel("~/HaplotypesTable.xlsx", sheet = "Sheet1")
 
 #strains[is.na(strains)] <- ""
 strains <- select(strains, c(2,3,15))
-#strains$geneo <- paste(strains$Host, strains$genotype, sep = " ")
-
-
-
-
-#strains <- subset(strains, (Geno %in% c( "PoL1-1","PoL1-1","PoL1-1","PoL1-1","PoL1-1","PoL1-1",
-#                                         "PoL1-1","PoT1","PoL1-2", "PoL1-6","PoL1-12","PoL1-13", "PoT1", "PoT4", "PoT32"))) #,
-#"PoL1-9","PoL1-11","PoL1-12", "PoL1-13", "PoT2","PoT3","PoT4","PoT5","PoT6",
-#"PoT7","PoT8","PoT9","PoT10","PoT11", "PoT12","PoT13","PoT14","PoT15","PoT16",
-#"PoT17","PoT18","PoT19","PoT20","PoT21", "PoT23","PoT24","PoT25","PoT26","PoT27",
-#"PoT29","PoT30","PoT31","PoT32", "PoT34")))
-
-
 
 strains <- subset(strains, (Geno %in% c( "PoL1-1","PoT1","PoL1-2","PoL1-3","PoL1-4","PoL1-5","PoL1-6","PoL1-7","PoL1-8",
                                          "PoL1-9","PoL1-11","PoL1-12", "PoL1-13", "PoT2","PoT3","PoT4","PoT5","PoT6",
