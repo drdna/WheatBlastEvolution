@@ -15,7 +15,7 @@ perl SimpleFastaHeaders_SB.pl RAW_GENOMEs
 ```bash
 iSNPdirectory <WheatBlast>
 ```
-2. Fasta files with standardized header lines were copied into the *GENOMES* directory
+2. Fasta files with standardized header lines were copied into the WheatBlast/*GENOMES* directory
 3. iSNPcaller was then run in multi-threaded mode using the [iSNPcaller_MT.sh](/scripts/pairwiseVariantCalling/iSNPcaller_MT.sh) SLURM script.
 
 ## SNPcalling against the B71 reference genome using iSNPcaller:
