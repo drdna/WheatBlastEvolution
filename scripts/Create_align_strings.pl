@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-die "Usage: perl Create_align_stringsv2.pl <ref_genome> <blast-dir/blast-file> <out-dir>\n" if @ARGV < 3;
+die "Usage: perl Create_align_strings.pl <ref_genome> <blast-dir/blast-file> <out-dir> <force> (last argument optional: forces re-run of existing alignment string)\n" if @ARGV < 3;
 
 use FetchGenome;
 
