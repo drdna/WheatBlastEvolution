@@ -1,5 +1,7 @@
 # Variant Calling
-## iSNPcaller
+
+## SNP calling between all genomes using pairwise alignments
+### iSNPcaller
 Standard SNP callers fail to detect repetitive portions of fungal genomes which results in the reporting of false variants between non-allelic sequences. Repeat-masking programs also miss large numbers of repeated sequences. To address these problem we built a BLAST-based SNP caller that pre-masks all repeats in the reference and query genomes before alignment, and then performs a second round of masking after alignment to screen out "cryptic" repeats that are not detected using genome self-comparison. Our program, [iSNPcaller_MT.pl](/scripts/pairwiseVariantCalling/iSNPcaller_MT.pl) works in an incremental fashion where newly added genomes are first compared with one another, and then with those that have been previously analyzed.
 iSNPcaller performs the following operations:
 a) Rewrites sequence header lines using a standard format: >genomeID_contig1, >genomeID_contig2, etc.)
@@ -8,8 +10,6 @@ c) Blasts each genome against all others in pairwise fashion
 d) Determines # of uniquely aligned nucleotide positions for each genome x genome comparision
 e) Performs SNP calling and reports: i) total # of SNPs; ii) total number of uniquely aligned nucleotide positions; and iii) SNPs/Mb uniquely aligned sequence
 f) Moves analyzed sequences/results into a "PROCESSED" directory, allowing new genomes to be analyzed in an incremental fashion
-
-## SNP calling between all genomes using pairwise alignments
 
 For the first run:
 
@@ -23,7 +23,7 @@ If iSNPcaller is run without an argument, it will ask you if the run is the firs
 ```bash
 cp myCurrentGenomesDirectory/*fasta WheatBlast/GENOMES/
 ```
-### Important: iSNPcaller requires that genome assemblies are named using only alphanumerics and hyphens. Underscore characters are allowed but any characters after the first underscore will be stripped off. Sequence header lines can have any format because iSNPcaller will create its own using the genome identifier found in the filename.
+#### Important: iSNPcaller requires that genome assemblies are named using only alphanumerics and hyphens. Underscore characters are allowed but any characters after the first underscore will be stripped off. Sequence header lines can have any format because iSNPcaller will create its own using the genome identifier found in the filename.
 7. iSNPcaller was then run in multi-threaded mode using the [iSNPcaller_MT.sh](/scripts/pairwiseVariantCalling/iSNPcaller_MT.sh) SLURM script.
 
 ## SNPcalling against the B71 reference genome using iSNPcaller:
