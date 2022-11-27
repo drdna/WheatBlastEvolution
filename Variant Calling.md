@@ -26,7 +26,7 @@ cp myCurrentGenomesDirectory/*fasta WheatBlast/GENOMES/
 #### Important: iSNPcaller requires that genome assemblies are named using only alphanumerics and hyphens. Underscore characters are allowed but any characters after the first underscore will be stripped off. Sequence header lines can have any format because iSNPcaller will create its own using the genome identifier found in the filename.
 7. iSNPcaller was then run in multi-threaded mode using the [iSNPcaller_MT.sh](/scripts/pairwiseVariantCalling/iSNPcaller_MT.sh) SLURM script.
 
-## SNPcalling against the B71 reference genome using iSNPcaller:
+## SNPcalling against the B71 reference genome:
 
 1. Each genome assembly was run through a custom script that masks all nucleotide positions that occur in multiple alignments when the genome is BLASTed against itself:
 ```bash
