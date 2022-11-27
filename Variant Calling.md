@@ -1,8 +1,6 @@
 # Variant Calling
-
-## SNP calling between all genomes using pairwise alignments
 ### iSNPcaller
-Standard SNP callers fail to detect repetitive portions of fungal genomes which results in the reporting of false variants between non-allelic sequences. Repeat-masking programs also miss large numbers of repeated sequences. To address these problem we built a BLAST-based SNP caller that pre-masks all repeats in the reference and query genomes before alignment, and then performs a second round of masking after alignment to screen out "cryptic" repeats that are not detected using genome self-comparison. Our program, [iSNPcaller_MT.pl](/scripts/pairwiseVariantCalling/iSNPcaller_MT.pl) works in an incremental fashion where newly added genomes are first compared with one another, and then with those that have been previously analyzed.
+Standard SNP callers fail to detect repetitive portions of fungal genomes which results in the reporting of false variants between non-allelic sequences. Repeat-masking programs also miss large numbers of repeated sequences. To address these problem we built a BLAST-based SNP caller that pre-masks all repeats in the reference and query genomes before alignment, and then performs a second round of masking after alignment to screen out "cryptic" repeats that are not detected using genome self-comparison. Our program, [iSNPcaller](https://github.com/drdna/iSNPcaller) works in an incremental fashion where newly added genomes are first compared with one another, and then with those that have been previously analyzed.
 iSNPcaller performs the following operations:
 a) Rewrites sequence header lines using a standard format: >genomeID_contig1, >genomeID_contig2, etc.)
 b) Creates a repeat-masked version of every genome assembly
@@ -10,24 +8,20 @@ c) Blasts each genome against all others in pairwise fashion
 d) Determines # of uniquely aligned nucleotide positions for each genome x genome comparision
 e) Performs SNP calling and reports: i) total # of SNPs; ii) total number of uniquely aligned nucleotide positions; and iii) SNPs/Mb uniquely aligned sequence
 f) Moves analyzed sequences/results into a "PROCESSED" directory, allowing new genomes to be analyzed in an incremental fashion
-
-For the first run:
-
-1. Run iSNPcaller and provide the name of the project as an argument (only alphanumerics, underscores and hyphens allowed):
+## SNP calling based on pairwise alignments between all genomes
+1. iSNPcaller (multi-threaded version) was used to create a project directory, with subfolders for holding intermadiate analyses and final outputs:
 ```bash
 perl iSNPcaller_MT.pl WheatBlast
 ```
-If iSNPcaller is run without an argument, it will ask you if the run is the first one for the project. It will then ask for a project name.
-
-2. Open a second terminal window and copy genome assembly files (in fasta format) into the GENOMES folder inside the newly-created project directory:
+2. Genomes were copied into the newly-created GENOMES directory:
 ```bash
-cp myCurrentGenomesDirectory/*fasta WheatBlast/GENOMES/
+cp RAW_GENOMES/*fasta WheatBlast/GENOMES/
 ```
-#### Important: iSNPcaller requires that genome assemblies are named using only alphanumerics and hyphens. Underscore characters are allowed but any characters after the first underscore will be stripped off. Sequence header lines can have any format because iSNPcaller will create its own using the genome identifier found in the filename.
-7. iSNPcaller was then run in multi-threaded mode using the [iSNPcaller_MT.sh](/scripts/pairwiseVariantCalling/iSNPcaller_MT.sh) SLURM script.
-
+3. iSNPcaller was then run in multi-threaded mode on a High Performance Computing Cluster using the [iSNPcaller_MT.sh](/scripts/pairwiseVariantCalling/iSNPcaller_MT.sh) SLURM script:
+```bash
+sbatch $scripts/iSNPcaller_MT.sh WheatBlast
+```
 ## SNPcalling against the B71 reference genome:
-
 1. Each genome assembly was run through a custom script that masks all nucleotide positions that occur in multiple alignments when the genome is BLASTed against itself:
 ```bash
 mkdir MASKED_GENOMEs
@@ -52,7 +46,7 @@ SNPs were called using a standard Bowtie2/GATK pipeline using the [BWT2-GATK.sh]
 ```bash
 bowtie2-build B71.fasta B71_index/B71
 ```
-2. Sequence reads were aligned using bowtie2 and genotyping was performed using GATK using the [BWT2-GATK.sh](/scripts/bowtieGATK/BWT2-GATK.sh) SLURM script.
+2. Sequence reads were aligned using bowtie2 and genotyping was performed using GATK version 4.1.4.1 using the [BWT2-GATK.sh](/scripts/bowtieGATK/BWT2-GATK.sh) SLURM script.
 ```bash
 for f in `ls FASTQ_DIRECTORY/*_1.fastq.gz | awk -F '/|_' '{print $3}`; do sbatch BWT2-GATK.sh B71.fasta FASTQ_DIRECTORY $f; done
 ```
