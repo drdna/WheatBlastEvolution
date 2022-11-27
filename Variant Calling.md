@@ -70,13 +70,3 @@ perl GATKviSNPcaller.pl samples.txt Chr1Chr2Chr5_sites.txt B71v5_SNPs > Chr1Chr2
 ```bash
 perl Summarize_SNPs_no_dodgy.pl CHR1CHR2CHR5_VCFs > Chr1Chr2Chr5_final.txt
 ```
-4. Finally, the [Create_fasta_alignment.pl](/scripts/Create_fasta_alignment.pl) script was used to generate a sequence alignment file, taking into account the reference base at each position, as well as alignment information (yes/no) across the site in question.
-```bash
-perl Create_fasta_alignment.pl Chr1Chr2Chr5_final.txt ALIGNSTRINGS
-```
-This produced the alignment file: Chr1Chr2Chr5_final.fasta.
-5. Lastly, date information was appended to each sample identifier using the [AddDates.pl](/scripts/AddDates.pl) script:
-```bash
-perl AddDates.pl samples.txt Chr1Chr2Chr5_final.fasta > Chr1Chr2Chr5_dated.fasta
-```
-The resulting file was imported into BEAUTI to gerenate the BEAST input file.
