@@ -1,13 +1,10 @@
 # Molecular Dating of Wheat Blast Evolution
-The validated SNP dataset was converted into a sequence alignment file using the ([Create_fasta_alignment.pl](/scripts/Create_fasta_alignment.pl):
+The validated SNP dataset was converted into a sequence alignment file, and dates of sample collection were added using the ([Create_fasta_alignment.pl](/Fig5/scripts/Create_fasta_alignment.pl) script (note: this uses alignment strings data to ensure that each site was called in every genome. These data are too large to be included in this repository and should be generated *de novo* from BLAST results using the [Create_align_strings.pl]() script):
 ```bash
 perl Create_fasta_alignment.pl Chr1Chr2Chr5_final.txt ALIGNSTRINGS
 ```
 This produced the alignment file: Chr1Chr2Chr5_final.fasta.
-2. Then, sample date collection information was appended to each sequence header line using the [AddDates.pl](/scripts/AddDates.pl) script:
-```bash
-perl AddDates.pl samples.txt Chr1Chr2Chr5_final.fasta > Chr1Chr2Chr5_dated.fasta
-```
+
 ## Measurement of Phylogenetic Signal
 The [Chr1Chr2Chr5_dated.fasta](/Fig5/Chr1Chr2Chr5_dated.fasta) file comprising all SNPs on the co-inherited regions of chromosomes 1, 2 and 5 was imported into MEGAX and used to build a distance tree with 1,000 bootstrap replications. The resulting tree [Chr1Chr2Chr5_dated.tre](/Fig5/Chr1Chr2Chr5_dated.tre) was then used as an input to TempEst v1.5.3 (http://tree.bio.ed.ac.uk/software/tempest/) and the root-to-tip distances were calculated. The data were output as a table, and lineage information was added using the [Root-to-tip_addLineages.pl](/scripts/Root-to-tip_addLineages.pl) script. Correlations between sampling dates and phylogenetic distance were then calculated using a custom R script [Fig5A_Root2Tip.R](/Fig5/Fig5A_Root2Tip.R). 
 ![Root2Tip.tiff](/Fig5/Root2Tip.tiff)
