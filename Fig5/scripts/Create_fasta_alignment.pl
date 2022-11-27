@@ -2,7 +2,7 @@
 
 # Generates dataset listing alleles at SNP sites that are called in ALL strains
 
-die "Usage: Create_haplotypes_dataset_fasta.pl <SNP-dataset> <align-string-directory\n" if @ARGV != 2;
+die "Usage: Create_fasta_alignment.pl <SNP-dataset> <align-string-directory\n" if @ARGV != 2;
 
 use FetchGenome;
 
@@ -11,7 +11,7 @@ use FetchGenome;
 
 # get reference sequences
 
-$refRef = FetchGenome::getSeqs("FASTAs/B71-VCF-corr2.fasta");
+$refRef = FetchGenome::getSeqs("FASTAs/B71.fasta");
 
 
 # create chr1 and chr2 hashes
