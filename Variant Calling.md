@@ -13,7 +13,7 @@ f) Moves analyzed sequences/results into a "PROCESSED" directory, allowing new g
 
 For the first run:
 
-1. Run iSNPcaller and provide the name of the project as an argument (using only alphanumerics, underscores and hyphens allowed):
+1. Run iSNPcaller and provide the name of the project as an argument (only alphanumerics, underscores and hyphens allowed):
 ```bash
 perl iSNPcaller_MT.pl WheatBlast
 ```
