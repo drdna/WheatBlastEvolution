@@ -239,7 +239,7 @@ sub PROCESS_VARIANT_STRAINS {
 }
 
 
-open(L, "Dating_strain_list");
+open(L, "Dating_strain_list.txt");
 
 while($L = <L>) {
 
