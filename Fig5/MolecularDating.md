@@ -1,5 +1,5 @@
 # Molecular Dating of Wheat Blast Evolution
-The validated SNP dataset was converted into a sequence alignment file, and dates of sample collection were added using the ([Create_fasta_alignment.pl](/Fig5/scripts/Create_fasta_alignment.pl) script (note: this uses alignment strings data to ensure that each site was called in every genome. These data are too large to be included in this repository and should be generated *de novo* from BLAST results using the [Create_align_strings.pl]() script):
+The validated SNP dataset was converted into a sequence alignment file, and dates of sample collection were added using the ([Create_fasta_alignment.pl](/Fig5/scripts/Create_fasta_alignment.pl) script (note: this uses alignment strings data to ensure that each site was called in every genome. These data are too large to be included in this repository and should be generated *de novo* from BLAST results using the [Create_align_strings.pl](/scripts/Create_align_strings.pl) script):
 ```bash
 perl Create_fasta_alignment.pl Chr1Chr2Chr5_final.txt ALIGNSTRINGS
 ```
