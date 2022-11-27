@@ -66,7 +66,7 @@ perl Summarize_SNPs.pl CHR1CHR2CHR5_FINAL > Chr1Ch2Chr5_sites.txt
 ```bash
 perl GATKviSNPcaller.pl samples.txt Chr1Chr2Chr5_sites.txt B71v5_SNPs > Chr1Chr2Chr5_GATKviSNPs.txt
 ```
-3.   Any differences (either in variant positions and/or which samples possessed a given variant) were investigated to identify the reason for the discrepancy. Confirmed "problem" sites were recorded in a "disallowed-sites" file (for false calls), or in a "add-back" file (for legitimate calls filtered out by the SmartSNPs script). The SNP call dataset was then updated using the [Summarize_SNPs_no_dodgy.pl](/scripts/bowtieGATK/Summarize_SNPs_no_dodgy.pl) script:
+3.   Any differences (either in variant positions and/or which samples possessed a given variant) were investigated to identify the reason for the discrepancy. Confirmed "problem" sites were recorded in a "disallowed-sites" file (for false calls), or in a "add-back" file (for legitimate calls filtered out by the SmartSNPs script). The SNP call dataset was then updated using the [Summarize_SNPs_no_dodgy.pl](/scripts/bowtieGATK/Summarize_SNPs_no_dodgy.pl) script to generate the final dataset [Chr1Chr2Chr5_final.txt](Fig5/data/Chr1Chr2Chr5_final.txt):
 ```bash
 perl Summarize_SNPs_no_dodgy.pl CHR1CHR2CHR5_VCFs > Chr1Chr2Chr5_final.txt
 ```
