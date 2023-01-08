@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
-# Use continuous x scale and manually compute (center) position & width of each bar
+# Compress copyprobs files by rounding the X axis values (SNP positions) to every 10 kb
+# and only plotting one datapoint for each rounded x position
 
 # Open CP file
 
