@@ -1,6 +1,8 @@
 #!/usr/bin/perl
 
+# Code to generate a table of reciprocal crossover from the ChromoPainter dataframe used by plotting program 
 
+die "Usage: perl Reciprocal.v3.pl <ChromoPainter-dataframe>\n" if @ARGV < 1;
 
 # load List module
 
