@@ -1,10 +1,14 @@
 #!/usr/bin/perl
 
+# Reads the final chromopainter dataframe that is used for plotting chromosomes in R.
+
+die "Usage: perl Reciprocal.v2.pl <chromopainter-dataframe>\n" if @ARGV < 1;
 
 
 # load List module
 
 use List::MoreUtils qw(uniq);
+
 
 # open chromopainter dataframe
 
@@ -84,15 +88,6 @@ while($L = <F>) {
 
         push @{$ReciprocalHash{$chr}{$prevpos}{$pos}{2}}, $otherHapl;
 
-
-#        print "previous: $hapl\t$chr\t$prevpos\t$prevlineage\n";
-
-#        print "current pos: $hapl\t$chr\t$pos\t$lineage\n";
-
-#        print "other match: $otherHapl\t$chr\t$prevpos\t$lineage\n";
-
-#        print "other match $otherHapl\t$chr\t$pos\t$prevlineage\n";
-
       }
 
     }
@@ -127,5 +122,7 @@ foreach $chr (sort {$a cmp $b} keys %ReciprocalHash) {
       print join ("\t", ('', $pos1, $lineage, $pos2, $prevlineage)), join(", ", @List2), "\n";
 
     }
+
   }
+
 }
