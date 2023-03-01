@@ -117,9 +117,9 @@ foreach $chr (sort {$a cmp $b} keys %ReciprocalHash) {
 
       @List2 = sort {$a cmp $b} (uniq @{$ReciprocalHash{$chr}{$pos1}{$pos2}{2}});
 
-      print join ("\t", ($chr, $pos1, $prevlineage, $pos2, $lineage)), join(", ", @List1), "\n";
+      print join ("\t", ($chr, $pos1, $prevlineage, $pos2, $lineage)), "\t", join(", ", @List1), "\n";
 
-      print join ("\t", ('', $pos1, $lineage, $pos2, $prevlineage)), join(", ", @List2), "\n";
+      print join ("\t", ('', $pos1, $lineage, $pos2, $prevlineage)), "\t", join(", ", @List2), "\n";
 
     }
 
