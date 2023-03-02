@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# Calculates whole genome proportions for each donor contribution to swarm
+# Reads Chromopainter dataframe and calculates whole genome proportions for each donor contribution to swarm
 
 die "Usage: perl Whole_genome_proportions.pl <CP-dataframe>\n" if @ARGV != 1;
 
