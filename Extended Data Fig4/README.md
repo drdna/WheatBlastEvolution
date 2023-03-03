@@ -4,12 +4,12 @@ The ExtDataFig4.R code reads the ShinyHaplotypes output directory (NEE_SHINY) an
 
 ### *#* Reference strain
 
-Currently set to load plots for B71
+Currently set to load plots for B71.
 
 ### *#* Comparator strains
 
-Code is currently set to compare against all non-PoT/PoL1 strains
+Code is currently set to compare against all non-PoT/PoL1 strains.
 
 ### *#*  Clade colors
 
-Color scheme is set all non-donors as black and all PoX-related populations as blue
+Color scheme is set all non-donors as black and all PoX-related populations as blue.
