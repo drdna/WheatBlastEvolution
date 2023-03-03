@@ -1,5 +1,9 @@
 #!/usr/bin/perl
 
+# Written by Mark L. Farman
+
+die "Usage: perl Fig2A_ChromoPaint_to_R.pl <CP-outfile>\n" if $ARGV < 1;
+
 # Use continuous x scale and manually compute (center) position & width of each bar
 
 # Open CP file
