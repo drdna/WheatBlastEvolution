@@ -4,7 +4,7 @@
 cd Out_3/
 ./Run_CP.sh
 ```
-2. Fig2A was generated using the [Fig2A_B71_ChromoPaint.R](/Fig2/Fig2A_B71_ChromoPaint.R) script to point to the directory [Out_3](/Fig2/Out_3.tar.gz) containing the ChromoPainter "forR" and "widths" output files:
+2. Fig2A was generated using the [Fig2A_B71_ChromoPaint.R](/Fig2/Fig2A_B71_ChromoPaint.R) script which was run from within directory [Out_3](/Fig2/Out_3.tar.gz) containing the ChromoPainter "forR" and "widths" output files:
 
 ![Fig2A.tiff](/Fig2/Fig2A.tiff)
 
