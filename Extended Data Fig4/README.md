@@ -1,6 +1,6 @@
 # Plotting ShinyHaplotypes comparisons
 
-The ExtDataFig4.R code reads the ShinyHaplotypes output directory and plots haplotype comparisons for a selected reference strain
+The ExtDataFig4.R code reads the ShinyHaplotypes output directory (NEE_SHINY) and plots haplotype comparisons for a selected reference strain
 
 ### *#* Reference strain
 
