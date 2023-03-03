@@ -50,9 +50,8 @@ cladeNames <- as.character(cladeName[,1])
 Lineages <- c("B1", "B2", "B3", "B4", "C", "Ec",  "E1", "E2", "E3", "Er", "Ha", "L", 
               "L2", "L3", "Le", "Lee", "Lu", "M", "O", "P", "Pan", "S", "St", "T", "U")
 
-
+# Color scheme
 # specify clade colors
-
 colors <- c(U1= "#D55E00", U2="#0072B2", U3= "#AA4499", C="black", Ec="black", 
             E1="#009E73", E2="#009E73", E3="#009E73", Er="black", H = "#FF00FF", L = "#a64dff", L2= "black", 
             Le="#0072B2", Lee="#0072B2", Lu= "#999999", M= "black", 
@@ -70,6 +69,7 @@ myPlots <- list()
 for (f in 1:7) {
   
   
+  # Reference strain
   # modify next line to select a different reference strain  
   df <- read.table(paste("~/NEE_SHINY/",  "Chr", f, ".", "B71", ".diffs", sep = ""), header = TRUE, row.names = 1, check.names = FALSE)  
   df <- df[-ncol(df)]     # strip off last column - redundant and messes up color assignment
@@ -80,6 +80,7 @@ for (f in 1:7) {
   # grab rownames and put in a new column named strains - filter by strains
   
   
+  # Comparator strains
   # uncomment/modify next line to select specific strain comparisons
   df2 <- df %>% rownames_to_column('Strains') %>% filter(., clade %in% c("U1", "U2", "U3", "E1", "E2",
                                                                          "E3", "Er", "H", "L2", "Le",
