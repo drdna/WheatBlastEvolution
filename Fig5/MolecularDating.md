@@ -6,7 +6,7 @@ perl Create_fasta_alignment.pl Chr1Chr2Chr5_final.txt ALIGNSTRINGS
 This produced the alignment file: Chr1Chr2Chr5_final.fasta.
 
 ## Measurement of Phylogenetic Signal
-The [Chr1Chr2Chr5_undated.fasta](/Fig5/data/Chr1Chr2Chr5_undated.fasta) file comprising all SNPs on the co-inherited regions of chromosomes 1, 2 and 5 was used to build a distance tree with RAxML-NG under the GTRgamma model and 1,000 bootstrap replications. The resulting tree [Chr1Chr2Chr5_undated.fasta.bestTree.raxml](/Fig5/data/Chr1Chr2Chr5_undated.fasta.bestTree.raxml) was then used as an input to the R script [Fig5AB_PhyloSignal.pl] to calculate Pearson's correlation between pylogenetic distance and sampling date, and to assess the robustness of this signal by resampling the data. 
+The [Chr1Chr2Chr5_undated.fasta](/Fig5/data/Chr1Chr2Chr5_undated.fasta) file comprising all SNPs on the co-inherited regions of chromosomes 1, 2 and 5 was used to build a distance tree with RAxML-NG under the GTRgamma model and 1,000 bootstrap replications. The resulting tree [Chr1Chr2Chr5_undated.fasta.bestTree.raxml](/Fig5/data/Chr1Chr2Chr5_undated.fasta.bestTree.raxml) was then used as an input to the R script [Fig5AB_PhyloSignal.pl](/Fig5/scripts/Fig5AB_PhyloSignal.R) to calculate Pearson's correlation between pylogenetic distance and sampling date, and to assess the robustness of this signal by resampling the data. 
 ![Fig5AB.tiff](/Fig5/Fig5AB.tiff)
 Figure 5AB. Correlation between Patristic Distance and Sampling Date.
 ## Choosing a Nucleotide Substitution Model
