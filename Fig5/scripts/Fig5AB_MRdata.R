@@ -29,7 +29,6 @@ df <- data.frame(Year = dates, Dist2ATCC = Dist2ATCC, lineages = lineages)
 df <- df[rownames(df) != "ATCC64557", ]  # remove self comparison
 
 # plot the tree
-
 p <- ggscatter(df, x="Year", y="Dist2ATCC", size = 3, color = "lineages", add = "reg.line", 
                add.params = list(color = "blue", fill = "lightgray"),
                conf.int = TRUE, fullrange = TRUE) +
@@ -42,16 +41,11 @@ p <- ggscatter(df, x="Year", y="Dist2ATCC", size = 3, color = "lineages", add = 
         axis.title.x=element_text(size = 12, face = "bold", vjust = -3),
         axis.title.y=element_text(size = 12, face = "bold", vjust = 2),
         plot.margin = margin(0,0,0,0, "cm"))
-
+        
+# calculate Pearson's R and save as object
 p1 <- p + stat_cor(method = "pearson", label.x = 1982, label.y = 0.075)
 
-
-#plot(m, main = "Phylogenetic Signal for WB/GLS population)", xlim = c(1960, 2020),
-#     xlab = "Collection Year", ylab = "Patristic Distance to ATCC64557")
-#legend('topright', paste("Pearson\'s r =", round(cor(m$Coll_Year, m$Patr_dist_to_ATCC), 2)), bty = 'n')
-#abline(lm(m$Patr_dist_to_ATCC ~ m$Coll_Year), lty = 2)
-#cor.test(m$Coll_Year, m$Patr_dist_to_ATCC)
-
+# perform resampling/randomization
 set.seed(123)
 Resampled <- c()
 Randomized <- c()
@@ -69,7 +63,7 @@ for(i in 1:1000) {
 }
 
 # melt data frame for plotting
-Perms2 <- melt(cbind(Resampled, Randomized), id.vars = colnames) 
+Perms <- melt(cbind(Resampled, Randomized), id.vars = colnames) 
 
 p2 <- ggplot(Perms2) + geom_boxplot(aes(x=Var2, y=value), color = "black") +
   xlab("Sampling Strategy") +
@@ -86,5 +80,4 @@ p1 + p2 + plot_layout(widths = c(5, 2.5)) +
      plot_annotation(title = "Phylogenetic signal",
                      theme = theme(plot.title = element_text(hjust = 0.5, size = 18)))
 dev.off()
-#ggsave("Fig5AB.tiff", dpi = 600, bg = "white")
   
