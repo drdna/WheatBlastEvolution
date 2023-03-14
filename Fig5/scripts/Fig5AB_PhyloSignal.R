@@ -65,7 +65,7 @@ for(i in 1:1000) {
 # melt data frame for plotting
 Perms <- melt(cbind(Resampled, Randomized), id.vars = colnames) 
 
-p2 <- ggplot(Perms2) + geom_boxplot(aes(x=Var2, y=value), color = "black") +
+p2 <- ggplot(Perms) + geom_boxplot(aes(x=Var2, y=value), color = "black") +
   xlab("Sampling Strategy") +
   ylab("R value") +
   theme(plot.title = element_text(size = 18, face = "bold", vjust = -2),
