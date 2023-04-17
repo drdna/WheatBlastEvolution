@@ -4,52 +4,16 @@
 The custom script [Generate_ARGsites.pl](/ARG/scripts/Generate_ARGsites.pl) was used to construct a downsampled dataset for chromosome 2 ([Chr2ARGvalidSkip0.sites](/ARG/data/Chr2ARGvalidSkip0.sites)) which contains introgressions from all of the major swarm donors (note: ARGweaver struggles with large datasets - even on the supercomputer - and therefore we included a modest set of strains in the analysis). For PoL1/PoT we included a single representive of each haplotype for chromosome 2. We also included at least one member of each candidate donor population and three putative non-donors.
 
 ### PoL1 members
-ATCC64557
-
-BTBa-B1
-
-P28
-
-Po221
-
-Pg1213-22
-
-PtKY18-1
-
-U234
+ATCC64557, BTBa-B1, P28, Po221, Pg1213-22, PtKY18-1, U234
 
 ### PoT members:
-Br126.1
-
-Br127.11
-
-T1-1
-
-T2-1
-
-T47-3
+Br126.1, Br127.11, T1-1, T2-1, T47-3
 
 ### Candidate donors:
-Bm88324 (PoU1)
-
-Br35 (PoSt)
-
-CD156 (PoE1)
-
-U168 (PoLu)
-
-U169 (PoE1)
-
-U232 (PoX)
-
-U75 (PoX)
+Bm88324 (PoU1), Br35 (PoSt), CD156 (PoE1), U168 (PoLu), U169 (PoE1), U232 (PoX), U75 (PoX)
 
 ### Non-donors:
-Cd88215 (PoC1)
-
-EiJA178 (PoE3)
-
-MrJA49 (PoM)
+Cd88215 (PoC1), EiJA178 (PoE3), MrJA49 (PoM)
 
 ## 2. Run ARGweaver:
 ARGweaver was run for 200 iterations using 100 time intervals using a mutation rate of 2E-7 and recombination rate of 1.5E-9.
