@@ -21,14 +21,14 @@ use MasterList;
 use FetchGenome;
 
 
-die "Usage: perl Generate_ARGsites.pl <SAMPLES_LIST> <SNPFILE_DIR> <REF_GENOME_FASTA> <CHR#> <skip>\n" if @ARGV != 5;
+die "Usage: perl Generate_ARGsites.pl <SAMPLES_LIST> <SNPFILE_DIR> <REF_GENOME_FASTA> <CHR#> <CHR-LENGTH> <skip>\n" if @ARGV != 5;
 
 # SNP outfiles must be named according to the format: Ref_v_Subject_out 
 
 
 ### declare global variables
 
-my ($Strains, $snpsDir, $refGenome, $chrNum, $nth) = @ARGV;
+my ($Strains, $snpsDir, $refGenome, $chrNum, $chrLength, $nth) = @ARGV;
 
 $StrainsHashRef = MasterList::strains($Strains);
 
@@ -268,7 +268,7 @@ sub PRINT_SITES {
 
   foreach my $chr (sort {$a cmp $b} keys %VariantHash) {
 
-    print "REGION\t$chr\t1\t6133529\n";
+    print "REGION\t$chr\t1\t$chrLength\n";
 
     foreach my $pos (sort {$a <=> $b} keys %{$VariantHash{$chr}}) {
 
