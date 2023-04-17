@@ -19,31 +19,20 @@ Cd88215 (PoC1), EiJA178 (PoE3), MrJA49 (PoM)
 ARGweaver was run for 200 iterations using 100 time intervals using a mutation rate of 2E-7 and recombination rate of 1.5E-9.
 ```bash
 ## ARGweaver.sh
-
 # Script for running ARGweaver:
-
 # Usage: sbatch ARGweaver.sh <sites-file> <mutation-rate> <recombination-rate> <region-to-analyze>
 
 ## ARGUMENTS
-
 sitesfile=$1
-
 mutrate=$2
-
 recombrate=$3
-
 region=$4
-
 outprefix=${sitesfile/\.sites/}_${mutrate}_${recombrate}_${region}/${sitesfile/\.sites/}_${region}
 
 ## RUN
-
 source /project/farman_uksr/miniconda/etc/profile.d/conda.sh
-
 conda activate bioinfo
-
 arg-sample -s $sitesfile --ntimes 100  -n 200 --sample-step 1 -m $mutrate -r $recombrate -o $outprefix --region $region --overwrite
-
 conda deactivate
 ```
 ## 3. Construct tree sequence for select regions of chromosome 2:
