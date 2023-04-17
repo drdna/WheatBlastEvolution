@@ -6,7 +6,7 @@
 #
 # written by Mark L. Farman
 #
-# Purpose: Read SNPcaller outfiles, score all SNP positions, and record haplotypes for all individuals in a specified list
+# Purpose: Read SNPcaller outfiles, build haplotype scaffold, and record genotypes for all individuals included in a specified list
 #
 # Note: Must be re-run every time a new strain is added (unavoidable)
 #
