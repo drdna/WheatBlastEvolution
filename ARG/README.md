@@ -84,7 +84,7 @@ conda deactivate
 ```
 
 ## 3. Build ancestral recombination graphs:
-Ancestral recombination graphs were then built using the smc2arg.py script:
+Ancestral recombination graphs were then built using the smc2arg.py script (included in ARGweaver distribution):
 ```bash
 for f in `ls SMC_files/*gz`; do python2 smc2arg $f ${f/gz/arg}; done
 ```
