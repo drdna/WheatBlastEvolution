@@ -94,5 +94,5 @@ A custom script was then used to iterate through the result .arg files to determ
 for f in `ls SMC_files/*arg`; do perl ARGiterator.pl $f >> TMRREs.txt; done
 ```
 ## 5. Plot TMRREs:
-The custom R script ([TMRREs.R](/ARG/TMRREs.R)) was used to generate the following plot:
+The custom R script ([TMRREs.R](/ARG/TMRREs.R)) was used to generate a plot showing the TMRRE distributions for each candidate donor. Note how the isolates from the main candidate donor populations Bm88324 (PoU1), Br35 (PoSt), U168 (PoLu), U168 (PoE1), U75 and U232 (PoX) all have distributions heavily weighted toward T0, while the others are distributed over a considerable timeframe. Here it should be noted that most isolates show a small number of TMRREs near zero because the small size of non-recombinant chromosome blocks results in several comparision "windows" containing zero SNPs. Additionally, some TMRREs are overestimated because ARGweaver only uses time to convergence to estimate recombination date, and this will be highly dependent on the time to most recent common ancestor between the isolate selected as the candidate donor and the actual donor.
 ![TMRREs.png](/ARG/TMRREs.png)
