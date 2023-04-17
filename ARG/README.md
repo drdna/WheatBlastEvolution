@@ -88,11 +88,21 @@ Ancestral recombination graphs were then built using smc2arg.py script:
 ```bash
 for f in `ls SMC_files/*gz`; do python2 smc2arg $f ${f/gz/arg}; done
 ```
-## 4. Determine times to most recent recombination events
+## 4. Construct tree sequence for select regions of chromosome 2:
+a. Use the ARGweaver.py script to build maximum clade credibility trees for chromosome positions 0.5, 1, 2, 3, 4, 5, 6, and 7 Mb:
+```bash
+python ARGweaver.py
+```
+b. Use Fig6_ARG.R script to build chromopaintings of chromosome 2 for representative PoL1/PoT members and hypothetical donor isolates
+
+c. Manually merge and edit the resulting pdfs in Illustrator.
+![TreeSequence.png](/ARG/TreeSequence.png)
+
+## 5. Determine times to most recent recombination events
 A custom script was then used to iterate through the result .arg files to determine for each candidate donor isolate, the most recent inferred convergence date (time to most recent recombination event, TMRRE) between that isolate and any member of the PoL1/PoT population.
 ```bash
 for f in `ls SMC_files/*arg`; do perl ARGiterator.pl $f >> TMRREs.txt; done
 ```
-## 5. Plot TMRREs:
+## 6. Plot TMRREs:
 The custom R script ([TMRREs.R](/ARG/TMRREs.R)) was used to generate a plot showing the TMRRE distributions for each candidate donor. Note how the isolates from the main candidate donor populations Bm88324 (PoU1), Br35 (PoSt), U168 (PoLu), U168 (PoE1), U75 and U232 (PoX) all have distributions heavily weighted toward T0, while the others are distributed over a considerable timeframe. Here it should be noted that most isolates show a small number of TMRREs near zero because the small size of non-recombinant chromosome blocks results in several comparision "windows" containing zero SNPs. Additionally, some TMRREs are overestimated because ARGweaver only uses time to convergence to estimate recombination date, and this will be highly dependent on the time to most recent common ancestor between the isolate selected as the candidate donor and the actual donor.
 ![TMRREs.png](/ARG/TMRREs.png)
