@@ -48,7 +48,7 @@ b. Use [PlotTanglegrams.py](/ARG/scripts/PlotTanglegrams.py) script to plot tree
 ```bash
 python PlotTanglegrams.py sim-trees/
 ```
-c. Use [Fig6_ARG.R[(/ARG/scripts/Fig6_ARG.R) script to build chromopaintings of chromosome 2 for representative PoL1/PoT members and hypothetical donor isolates
+c. Use [Fig6_ARG.R](/ARG/scripts/Fig6_ARG.R) script to build chromopaintings of chromosome 2 for representative PoL1/PoT members and hypothetical donor isolates
 
 d. Manually merge and edit the resulting pdfs in Illustrator:
 
