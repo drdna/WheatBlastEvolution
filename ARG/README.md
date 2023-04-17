@@ -93,9 +93,13 @@ a. Use the ARGweaver.py script to build maximum clade credibility trees for chro
 ```bash
 python ARGweaver.py
 ```
-b. Use Fig6_ARG.R script to build chromopaintings of chromosome 2 for representative PoL1/PoT members and hypothetical donor isolates
+b. Use plot-tanglegrams.py script to plot tree sequnce as a tanglegram:
+```bash
+python plot-tanglegrams.py sim-trees/
+```
+c. Use Fig6_ARG.R script to build chromopaintings of chromosome 2 for representative PoL1/PoT members and hypothetical donor isolates
 
-c. Manually merge and edit the resulting pdfs in Illustrator:
+d. Manually merge and edit the resulting pdfs in Illustrator:
 
 ![TreeSequence.png](/ARG/tanglegram-ML-trees.png)
 
