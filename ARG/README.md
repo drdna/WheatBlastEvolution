@@ -1,7 +1,7 @@
 # Analysis of Recombinational History using ARGweaver
 
 ## 1. Assemble dataset:
-The custom script [Generate_ARGsites.pl](/ARG/scripts/Generate_ARGsites.pl) was used to construct an appropriate dataset for chromosome 2 which contains introgressions from all of the major swarm donors (note: ARGweaver struggles with large datasets - even on the supercomputer - and therefore we included a modest set of strains in the analysis). For PoL1/PoT we included a single representive of each haplotype for chromosome 2. We also included at least one member of each candidate donor population and three putative non-donors.
+The custom script [Generate_ARGsites.pl](/ARG/scripts/Generate_ARGsites.pl) was used to construct a downsampled dataset for chromosome 2 ([Chr2ARGsamplesSkip4.txt](/ARG/data/Chr2ARGsamplesSkip4.txt)) which contains introgressions from all of the major swarm donors (note: ARGweaver struggles with large datasets - even on the supercomputer - and therefore we included a modest set of strains in the analysis). For PoL1/PoT we included a single representive of each haplotype for chromosome 2. We also included at least one member of each candidate donor population and three putative non-donors.
 
 ### PoL1 members
 ATCC64557
