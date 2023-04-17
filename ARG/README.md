@@ -1,7 +1,7 @@
 # Analysis of Recombinational History using ARGweaver
 
 ## 1. Assemble dataset:
-The custom script [Generate_ARGsites.pl](/ARG/scripts/Generate_ARGsites.pl) was used to construct an appropriate dataset for chromosome 2 which contains intrigressions from all of the major swarm donors (note: ARGweaver struggles with large datasets - even on the supercomputer - and therefore we included a modest set of strains in the analysis). For PoL1/PoT we included a single representive of each haplotype for chromosome 2. We also included at least one member of each candidate donor population and three putative non-donors.
+The custom script [Generate_ARGsites.pl](/ARG/scripts/Generate_ARGsites.pl) was used to construct an appropriate dataset for chromosome 2 which contains introgressions from all of the major swarm donors (note: ARGweaver struggles with large datasets - even on the supercomputer - and therefore we included a modest set of strains in the analysis). For PoL1/PoT we included a single representive of each haplotype for chromosome 2. We also included at least one member of each candidate donor population and three putative non-donors.
 
 ### PoL1 members
 ATCC64557
@@ -82,20 +82,16 @@ arg-sample -s $sitesfile --ntimes 100  -n 200 --sample-step 1 -m $mutrate -r $re
 
 conda deactivate
 ```
-
-## 3. Build ancestral recombination graphs:
-Ancestral recombination graphs were then built using the smc2arg.py script (included in ARGweaver distribution):
+## 3. Construct tree sequence for select regions of chromosome 2:
+a. Download .smc.gz files from MCC supercomputer and use the [ARGweaver.py](/ARG/scripts/ARGweaver.py) script to build maximum clade credibility trees for chromosome positions 0.5, 1, 2, 3, 4, 5, 6, and 7 Mb:
 ```bash
-for f in `ls SMC_files/*gz`; do python2 smc2arg $f ${f/gz/arg}; done
-```
-## 4. Construct tree sequence for select regions of chromosome 2:
-a. Use the [ARGweaver.py](/ARG/scripts/ARGweaver.py) script to build maximum clade credibility trees for chromosome positions 0.5, 1, 2, 3, 4, 5, 6, and 7 Mb:
-```bash
+mkdir smc_trees
+scp ${dtnmcc}Chr2ARGsitesSkip4/*smc.gz smc_trees
 python ARGweaver.py
 ```
-b. Use [PlotTanglegrams.py](/ARG/scripts/PlotTanglegrams.py) script to plot tree sequnce as a tanglegram:
+b. Use [PlotTanglegrams.py](/ARG/scripts/PlotTanglegrams.py) script to plot tree sequence as a tanglegram:
 ```bash
-python plot-tanglegrams.py sim-trees/
+python PlotTanglegrams.py sim-trees/
 ```
 c. Use Fig6_ARG.R script to build chromopaintings of chromosome 2 for representative PoL1/PoT members and hypothetical donor isolates
 
@@ -103,12 +99,18 @@ d. Manually merge and edit the resulting pdfs in Illustrator:
 
 ![TreeSequence.png](/ARG/tanglegram-ML-trees.png)
 
+## 4. Build ancestral recombination graphs:
+Ancestral recombination graphs were then built using the smc2arg.py script (included in ARGweaver distribution):
+```bash
+for f in `ls SMC_trees/*gz`; do python2 smc2arg $f ${f/gz/arg}; done
+```
+
 ## 5. Determine times to most recent recombination events (TMRREs)
 A custom script ([ARGiteratorNonTL.pl](/ARG/scripts/ARGiteratorNonTL.pl))was then used to iterate through the .arg files to determine for each candidate donor isolate, the most recent inferred convergence date (time to most recent recombination event, TMRRE) between that isolate and any member of the PoL1/PoT population.
 ```bash
 for f in `ls SMC_files/*arg`; do perl ARGiterator.pl $f >> TMRREs.txt; done
 ```
 ## 6. Plot TMRREs:
-The custom R script ([TMRREs.R](/ARG/scripts/TMRREs.R)) was used to generate a plot showing the TMRRE distributions for each candidate donor. Note how the isolates from the main candidate donor populations Bm88324 (PoU1), Br35 (PoSt), U168 (PoLu), U168 (PoE1), U75 and U232 (PoX) all have distributions heavily weighted toward T0, while the others are distributed over a considerable timeframe. Here it should be noted that most isolates show a small number of TMRREs near zero because the small size of non-recombinant chromosome blocks results in several comparision "windows" containing zero SNPs. Additionally, some TMRREs are overestimated because ARGweaver only uses time to convergence to estimate recombination date, and this will be highly dependent on the time to most recent common ancestor between the isolate selected as the candidate donor and the actual donor.
+The custom R script ([TMRREs.R](/ARG/scripts/TMRREs.R)) was used to generate a plot showing the TMRRE distributions for each candidate donor. Note how the isolates from the main candidate donor populations Bm88324 (PoU1), Br35 (PoSt), U168 (PoLu), U168 (PoE1), U75 and U232 (PoX) all have TMRREs of zero, or  heavily weighted towards T0. In contrast non-donors have TMRREs that are distributed over a considerable timeframe. Here it should be noted that all isolates show a small number of TMRREs near zero because the small size of non-recombinant chromosome blocks results in several comparison "windows" containing zero SNPs. Additionally, some TMRREs are larger than expected (e.g. for PoX islates U75 and U232). This is because ARGweaver only uses time to convergence to estimate recombination date, and this will be highly dependent on the time to most recent common ancestor between the isolate selected as the candidate donor and the actual donor.
 
 ![TMRREs.png](/ARG/TMRREs.png)
