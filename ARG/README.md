@@ -88,6 +88,8 @@ a. Download .smc.gz files from MCC supercomputer and use the [ARGweaver.py](/ARG
 mkdir smc_trees
 scp ${dtnmcc}Chr2ARGsitesSkip4/*smc.gz smc_trees
 python ARGweaver.py
+mkdir sim-trees
+mv MCCT*tre sim_trees
 ```
 b. Use [PlotTanglegrams.py](/ARG/scripts/PlotTanglegrams.py) script to plot tree sequence as a tanglegram:
 ```bash
