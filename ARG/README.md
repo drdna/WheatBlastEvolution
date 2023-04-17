@@ -84,14 +84,15 @@ conda deactivate
 ```
 
 ## 3. Build ancestral recombination graphs:
-An ancestral recombination graph was then build using smc2arg.py script:
+Ancestral recombination graphs were then built using smc2arg.py script:
 ```bash
 for f in `ls SMC_files/*gz`; do python2 smc2arg $f ${f/gz/arg}; done
 ```
-4. A custom script was then used to iterate through the result .arg files to determine for each candidate donor isolate, the most recent inferred convergence date (time to most recert recombination event, TMRRE) between that isolate and any member of the PoL1/PoT populations
+## 4. Determine times to most recent recombination events
+A custom script was then used to iterate through the result .arg files to determine for each candidate donor isolate, the most recent inferred convergence date (time to most recent recombination event, TMRRE) between that isolate and any member of the PoL1/PoT population.
 ```bash
 for f in `ls SMC_files/*arg`; do perl ARGiterator.pl $f >> TMRREs.txt; done
 ```
-5. Plot TMRREs:
+## 5. Plot TMRREs:
 The custom R script ([TMRREs.R](/ARG/TMRREs.R)) was used to generate the following plot:
 ![TMRREs.png](/ARG/TMRREs.png)
