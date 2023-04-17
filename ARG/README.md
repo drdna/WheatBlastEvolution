@@ -89,11 +89,11 @@ Ancestral recombination graphs were then built using the smc2arg.py script (incl
 for f in `ls SMC_files/*gz`; do python2 smc2arg $f ${f/gz/arg}; done
 ```
 ## 4. Construct tree sequence for select regions of chromosome 2:
-a. Use the ARGweaver.py script to build maximum clade credibility trees for chromosome positions 0.5, 1, 2, 3, 4, 5, 6, and 7 Mb:
+a. Use the [ARGweaver.py](/ARG/ARGweaver.py) script to build maximum clade credibility trees for chromosome positions 0.5, 1, 2, 3, 4, 5, 6, and 7 Mb:
 ```bash
 python ARGweaver.py
 ```
-b. Use plot-tanglegrams.py script to plot tree sequnce as a tanglegram:
+b. Use [plot-tanglegrams.py](/ARG/plot-tanglegrams.py) script to plot tree sequnce as a tanglegram:
 ```bash
 python plot-tanglegrams.py sim-trees/
 ```
