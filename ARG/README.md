@@ -104,7 +104,7 @@ d. Manually merge and edit the resulting pdfs in Illustrator:
 ![TreeSequence.png](/ARG/tanglegram-ML-trees.png)
 
 ## 5. Determine times to most recent recombination events
-A custom script ([ARGiterator.pl](/ARG/ARGiterator.pl))was then used to iterate through the .arg files to determine for each candidate donor isolate, the most recent inferred convergence date (time to most recent recombination event, TMRRE) between that isolate and any member of the PoL1/PoT population.
+A custom script ([ARGiteratorNonTL.pl](/ARG/ARGiteratorNonTL.pl))was then used to iterate through the .arg files to determine for each candidate donor isolate, the most recent inferred convergence date (time to most recent recombination event, TMRRE) between that isolate and any member of the PoL1/PoT population.
 ```bash
 for f in `ls SMC_files/*arg`; do perl ARGiterator.pl $f >> TMRREs.txt; done
 ```
