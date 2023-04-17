@@ -1,4 +1,4 @@
-#Author: Mostafa Rahnama
+#Author: Mostafa Rahnama & Mark Farman
 # Plotting copyprobsperlocus.out data from CP based on chromosomes and strains of interest 
 
 library(reshape2)
