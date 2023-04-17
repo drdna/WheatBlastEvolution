@@ -1,7 +1,7 @@
 # Analysis of Recombinational History using ARGweaver
 
 ## 1. Assemble dataset:
-An appropriate dataset was assembled for chromosome 2 using the custom script [Generate_ARGsites.pl](/ARG/Generate_ARGsites.pl). ARGweaver struggles with large datasets (even on the supercomputer) and therefore we included a modest set of strains in the analysis, each representing a different chromosomal haplotype: 
+An appropriate dataset was assembled for chromosome 2 using the custom script [Generate_ARGsites.pl](/ARG/Generate_ARGsites.pl). ARGweaver struggles with large datasets (even on the supercomputer) and therefore we included a modest set of strains in the analysis. For PoL1/PoT we included a single representive of each haplotype for this chromosome. We also included a at least one member of each candidate donor population and three putative non-donors.
 
 ### PoL1 members
 ATCC64557
@@ -36,8 +36,6 @@ Br35 (PoSt)
 
 CD156 (PoE1)
 
-Cd88215 (PoC1)
-
 U168 (PoLu)
 
 U169 (PoE1)
@@ -47,6 +45,8 @@ U232 (PoX)
 U75 (PoX)
 
 ### Non-donors:
+Cd88215 (PoC1)
+
 EiJA178 (PoE3)
 
 MrJA49 (PoM)
