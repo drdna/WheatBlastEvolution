@@ -40,6 +40,7 @@ a. Download .smc.gz files from MCC supercomputer and use the [ARGweaver.py](/ARG
 ```bash
 mkdir smc_trees
 scp ${dtnmcc}Chr2ARGsitesSkip4/*smc.gz smc_trees
+gunzip smc_trees/*gz
 python ARGweaver.py
 mkdir sim-trees
 mv MCCT*tre sim_trees
