@@ -4,32 +4,50 @@
 
 ### PoL1 members
 ATCC64557
+
 BTBa-B1
+
 P28
+
 Po221
+
 Pg1213-22
+
 PtKY18-1
+
 U234
 
 ### PoT members:
 Br126.1
+
 Br127.11
+
 T1-1
+
 T2-1
+
 T47-3
 
 ### Candidate donors:
 Bm88324 (PoU1)
+
 Br35 (PoSt)
+
 CD156 (PoE1)
+
 Cd88215 (PoC1)
+
 U168 (PoLu)
+
 U169 (PoE1)
+
 U232 (PoX)
+
 U75 (PoX)
 
 ### Non-donors:
 EiJA178 (PoE3)
+
 MrJA49 (PoM)
 
 2. ARGweaver was run for 200 iterations using 100 time intervals using a mutation rate of 2E-7 and recombination rate of 1.5E-9.
