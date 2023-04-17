@@ -1,6 +1,6 @@
 # Analysis of Recombinational History using ARGweaver
 
-1. An appropriate dataset was assembled for chromosome 2 using the custom script Generate_ARGsites.pl. ARGweaver struggles with large datasets (even on the supercomputer) and therefore we included a modest set of strains in the analysis, each representing a different chromosomal haplotype: 
+1. An appropriate dataset was assembled for chromosome 2 using the custom script [Generate_ARGsites.pl](/ARG/Generate_ARGsites.pl). ARGweaver struggles with large datasets (even on the supercomputer) and therefore we included a modest set of strains in the analysis, each representing a different chromosomal haplotype: 
 
 ### PoL1 members
 ATCC64557
