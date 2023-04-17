@@ -83,5 +83,5 @@ for f in `ls SMC_files/*gz`; do python2 smc2arg $f ${f/gz/arg}; done
 ```bash
 for f in `ls SMC_files/*arg`; do perl ARGiterator.pl $f >> TMRREs.txt; done
 ```
-5. Plot TMRREs using a custom R script (TMRREs.R)
+5. Plot TMRREs using a custom R script ([TMRREs.R](/ARG/TMRREs.R))
 ![TMRREs.png](/ARG/TMRREs.png)
