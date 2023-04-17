@@ -95,7 +95,8 @@ python ARGweaver.py
 ```
 b. Use Fig6_ARG.R script to build chromopaintings of chromosome 2 for representative PoL1/PoT members and hypothetical donor isolates
 
-c. Manually merge and edit the resulting pdfs in Illustrator.
+c. Manually merge and edit the resulting pdfs in Illustrator:
+
 ![TreeSequence.png](/ARG/tanglegram-ML-trees.png)
 
 ## 5. Determine times to most recent recombination events
