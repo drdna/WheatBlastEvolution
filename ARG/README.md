@@ -96,7 +96,7 @@ python ARGweaver.py
 b. Use Fig6_ARG.R script to build chromopaintings of chromosome 2 for representative PoL1/PoT members and hypothetical donor isolates
 
 c. Manually merge and edit the resulting pdfs in Illustrator.
-![TreeSequence.png](/ARG/TreeSequence.png)
+![TreeSequence.png](/ARG/tanglegram-ML-trees.png)
 
 ## 5. Determine times to most recent recombination events
 A custom script was then used to iterate through the result .arg files to determine for each candidate donor isolate, the most recent inferred convergence date (time to most recent recombination event, TMRRE) between that isolate and any member of the PoL1/PoT population.
