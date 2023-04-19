@@ -49,7 +49,7 @@ b. Use [PlotTanglegrams.py](/ARG/scripts/PlotTanglegrams.py) script to plot tree
 ```bash
 python PlotTanglegrams.py sim-trees/
 ```
-c. Use [CP4ARG.R](/ARG/scripts/CP4ARG.R) script to build chromopaintings of chromosome 2 for representative PoL1/PoT members and hypothetical donor isolates
+c. Use [CP4ARG.R](/ARG/scripts/CP4ARG.R) script to build chromopaintings of chromosome 2 for the PoL1/PoT haplotypes represented in the Ancestral Recombination Graph as well as inferred chromopaintings for the donor isolates.
 
 d. Manually merge and edit the resulting pdfs in Illustrator:
 
