@@ -1,5 +1,5 @@
 # Iterate through ShinyHaplotypes diff files and determine proportion of windows 
-# showing zero divergence between B71 reference isolate and the best donor(s)
+# showing zero divergence between B71 reference isolate and the best candidate donor(s)
 
 for (f in 1:7) {
   
@@ -15,8 +15,8 @@ for (f in 1:7) {
 
   nonzero <- windows[as.numeric(apply(z,1,min)) > 0]
 
-  proportion <- 1 - (length(nonzero)/length(windows))
+  proportionZero <- 1 - (length(nonzero)/length(windows))
 
-  print(paste0("Non-zero windows = ", proportion, sep = ""))
+  print(paste0("Zero divergence windows = ", round(proportionZero, 2), "%", sep = ""))
 
 }
