@@ -18,7 +18,7 @@ perl ShinyHaplotypes.pl strain.idfile CP 200 40
 ![B71vRepresentativeDonors.tiff](/Fig2/B71vRepresentativeDonors.tiff)
   
 ## Calculate proportion of windows showing zero divergence between B71 and nearest candidate donor isolate
-1. Imported ShinyHaplotypes .diff files into the [ZeroDivergenceWindows.R](/Fig2/ZeroDivergenceWindows.R) script:
+1. Import ShinyHaplotypes .diff files into the [ZeroDivergenceWindows.R](/Fig2/ZeroDivergenceWindows.R) script:
 ```bash
 [1] "Chr1: windows exhibiting zero divergence = 0.83%"
 [1] "Chr2: windows exhibiting zero divergence = 0.92%"
