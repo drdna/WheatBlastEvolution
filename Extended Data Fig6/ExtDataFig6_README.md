@@ -16,7 +16,7 @@ perl Sort_by_populationv3.pl CPAug3121 chr7 1790 2000 | perl 2PoE_2PoSt_haplotyp
 ```bash
 awk 'NR==3 {i=0; j=0; while($i > 6250000) i++; print $i; j++; if(j==1) {exit}}' CPAug3121/B71.chr2.V2.complete.cp
 ```
-3. Get an arbitrary end point beyond the crossover between the 2PoX and PoX contributions:
+3. Get an arbitrary end point beyond the presumptive crossover between the 2PoX and PoX contributions:
 ```bash
 awk 'NR==3 {i=0; j=0; while($i > 6400000) i++; print $i; j++; if(j==1) {exit}}' CPAug3121/B71.chr2.V2.complete.cp
 ```
