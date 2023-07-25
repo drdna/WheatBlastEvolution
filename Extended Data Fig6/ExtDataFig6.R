@@ -14,7 +14,7 @@ library(readr)
 library(tidyr)
 '%notin%' <- Negate('%in%')
 
-dt <- read.csv("~/Google Drive/1.NATURE_GENETICS/FigS9/2PoE1_example_on_Chr1.csv", header=TRUE)
+dt <- read.csv("~/2PoE1_Chr1_36450_110.csv", header=TRUE)
 dt <- subset(dt, select = -c(main))
 dt1 <- subset(dt, pop %in% c("E1", "E2", "E3", "T") )
 
@@ -23,9 +23,7 @@ dt2$sites <- gsub("X", "", as.character(dt2$sites))
 
 
 ### reading grouping data
-#PoE2 <- read.table("~/Google Drive/1.NATURE_GENETICS/Fig XX/2PoE_groups")
-#PoE2$groups <- 1:nrow(PoE2)
-PoE2 <- read_excel("~/Google Drive/1.NATURE_GENETICS/FigS9/2PoE_groups.xlsx")
+PoE2 <- read_excel("~/2PoE_groups.xlsx")
 PoE2_1 <- gather(PoE2, coln, strain, V1:V56)
 PoE2_2 <- PoE2_1[complete.cases(PoE2_1), ]
 PoE2_2 <- subset(PoE2_2, select = -c(coln))
@@ -70,7 +68,7 @@ final2$Subset = factor(final2$Subset, levels = c(
 
 final2 <- subset(final2, sites < 4840000)
 
-pdf(file=paste("~/Google Drive/1.NATURE_GENETICS/FigS9/Fig_final_4", 
+pdf(file=paste("~/ExtDataFig6_2PoE", 
                ".pdf", sep = ''), 23, 4.44) 
 print(
   ggplot(final2) +   #subset(df, Recipient == "ATCC64557") 
@@ -115,7 +113,7 @@ dev.off()
 ######################## PoSt
 '%notin%' <- Negate('%in%')
 
-dtst <- read.csv("~/Google Drive/1.NATURE_GENETICS/FigS9/PoSt/2PoSt_Chr7_1790_2000.csv", header=TRUE)
+dtst <- read.csv("~/2PoSt_Chr7_1790_2000.csv", header=TRUE)
 dtst <- subset(dtst, select = -c(col))
 dtst1 <- subset(dtst, pop %in% c("T", "Lee", "P", "O", "S", "P2") ) #   
 #dtst1$pop <- ifelse(dtst1$pop=="Lee"| dtst1$pop=="P"|dtst1$pop=="O"|dtst1$pop=="S"|dtst1$pop=="P2", "X", dtst1$pop)
@@ -125,7 +123,7 @@ dtst1 <- dtst1 %>% select(1:220)
 dt2 <- gather(dtst1, sites, value, X171523:X177915)
 dt2$sites <- gsub("X", "", as.character(dt2$sites))
 ###### choosing only St s
-dtst <- read.csv("~/Google Drive/1.NATURE_GENETICS/FigS9/PoSt/2PoSt_Chr7_1790_2000.csv", header=TRUE)
+dtst <- read.csv("~/2PoSt_Chr7_1790_2000.csv", header=TRUE)
 dtst <- subset(dtst, select = -c(col))
 dtst1 <- subset(dtst, pop %in% c("St") ) #   
 #choosing the first 200 columns
@@ -134,7 +132,7 @@ dt2_st <- gather(dtst1, sites, value, X171523:X177915)
 dt2_st$sites <- gsub("X", "", as.character(dt2_st$sites))
 
 ################################# choosing only E s
-dtst <- read.csv("~/Google Drive/1.NATURE_GENETICS/FigS9/PoSt/2PoSt_Chr7_1790_2000.csv", header=TRUE)
+dtst <- read.csv("~/2PoSt_Chr7_1790_2000.csv", header=TRUE)
 dtst <- subset(dtst, select = -c(col))
 dtst1 <- subset(dtst, pop %in% c("T", "E1", "E2", "E3") ) #   
 dtst1$pop <- ifelse(dtst1$pop=="E1"| dtst1$pop=="E2"|dtst1$pop=="E3", "E", dtst1$pop)
@@ -145,7 +143,7 @@ dt2_ET$sites <- gsub("X", "", as.character(dt2_ET$sites))
 
 ############################################################
 ### reading grouping data
-PoSt <- read_excel("~/Google Drive/1.NATURE_GENETICS/FigS9/PoSt/New_hapl_grps.xlsx")
+PoSt <- read_excel("~/New_hapl_grps.xlsx")
 PoSt_1 <- gather(PoSt, coln, strain, V1:V58)
 PoSt_2 <- PoSt_1[complete.cases(PoSt_1), ]
 PoSt_2 <- subset(PoSt_2, select = -c(coln))
@@ -223,7 +221,7 @@ Final$Subset = factor(Final$Subset, levels = c("PoSt/U3 (Br108-1-T)",
                                                 "PoX (Br130-T)", "PoX (Sv9623)",  
                                                 "PoE (B71-T)", "PoE (B51-E1)"))#
 
-pdf(file=paste("~/Google Drive/1.NATURE_GENETICS/FigS9/PoSt/Fig_final_4", 
+pdf(file=paste("~/ExtDataFig6_PoSt", 
                               ".pdf", sep = ''), 23, 4) 
 print(
   ggplot(Final) +   #subset(df, Recipient == "ATCC64557") 
