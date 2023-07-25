@@ -22,7 +22,7 @@ awk 'NR==3 {i=0; j=0; while($i > 6400000) i++; print $i; j++; if(j==1) {exit}}' 
 ```
 4. Use these coordinates with the 2PoX_haplotypes.pl script to extract haplotypes (in .fasta format) for this regions from select strains:
 ```bash
-perl 2PoX_haplotypes > 2PoX_haplotypes.fasta
+perl 2PoX_haplotypes.pl > 2PoX_haplotypes.fasta
 ```
 5. Represent haplotypes in column format for reading into R:
 ```bash
