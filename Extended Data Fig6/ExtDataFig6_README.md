@@ -8,6 +8,14 @@ perl Sort_by_populationv3.pl CPAug3121 chr1 36450 110 | perl 2PoE_2PoSt_haplotyp
 perl Sort_by_populationv3.pl CPAug3121 chr7 1790 2000 | perl 2PoE_2PoSt_haplotype_grps.pl - > 2PoSt_Chr7_1790_2000.csv
 ```
 2. Import csv files into ExtDataFig6.R script.
+3. Scale distances to total number of genomic sites queried (not just variant sites) by counting non-repetitive DNA positions in a representative alignment string:
+```bash
+awk '$1 ~ /Chr1/ {print substr($2, 4738666, 4874894-4738666+1)}' B71v2sh/B71v2sh.B71v2sh_alignments | grep 1 -o | wc -l
+```
+answer = 136147
+```bash
+awk '$1 ~ /Chr7/ {print substr($2, 4738666, 4874894-4738666)}' B71v2sh/B71v2sh.B71v2sh_alignments | grep 1 -o | wc -l
+```
 
 ## 2. From the PoX population
 1. Identify the approximate nucleotide position where the PoX contribution on the right arm of chromosome 2 starts:
