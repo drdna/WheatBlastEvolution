@@ -1,9 +1,9 @@
 # Analysis of secondary contributions from certain donor populations
 
 ## 1. Print haplotypes of representative isolates from the PoE1/PoSt populations
-1. Extract suspected 2PoE1 2PoSt regions from respective ChromoPainter (.cp) file and export as .csv:
+1. Extract suspected 2PoE1 & 2PoSt regions from respective ChromoPainter (.cp) file and export as .csv:
 ```bash
-perl Sort_by_populationv3.pl CPAug3121 chr1 36450 110 | perl 2PoE_2PoSt_haplotype_grps.pl - >2PoE1_Chr1_36450_110.csv
+perl Sort_by_populationv3.pl CPAug3121 chr1 36450 1600 | perl 2PoE_2PoSt_haplotype_grps.pl - >2PoE1_Chr1_36450_110.csv
 perl Sort_by_populationv3.pl CPAug3121 chr7 1790 2000 | perl 2PoE_2PoSt_haplotype_grps.pl - > 2PoSt_Chr7_1790_2000.csv
 ```
 2. Import csv files into ExtDataFig6.R script.
