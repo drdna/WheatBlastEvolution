@@ -14,9 +14,9 @@ awk '$1 ~ /Chr1/ {print substr($2, 4738666, 4874894-4738666+1)}' B71v2sh/B71v2sh
 ```
 answer = 136147
 ```bash
-awk '$1 ~ /Chr7/ {print substr($2, 4738666, 4874894-4738666)}' B71v2sh/B71v2sh.B71v2sh_alignments | grep 1 -o | wc -l
+awk '$1 ~ /Chr7/ {print substr($2, 171533, 232826-171533+1)}' B71v2sh/B71v2sh.B71v2sh_alignments | grep 1 -o | wc -l
 ```
-
+answer = 60716
 ## 2. From the PoX population
 1. Identify the approximate nucleotide position where the PoX contribution on the right arm of chromosome 2 starts:
 
