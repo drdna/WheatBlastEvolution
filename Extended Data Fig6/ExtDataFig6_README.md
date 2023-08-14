@@ -33,11 +33,18 @@ awk 'NR == 3 {for(i=66000;i<=71285; i++) print $i}' CPAug3121/B71.chr2.V2.comple
 ```
 ## 3. Convert tree distances to true phylogenetic distances (scale against total number of nucleotide positions queried not just variant sites).
 This was accomplished by counting non-repetitive DNA positions in the target regions by interrogating the B71v2sh self-aligned alignment string and scaling the tree distances accordingly:
+### 2PoE1
 ```bash
-awk '$1 ~ /Chr1/ {print substr($2, 4738666, 4874894-4738666+1)}' B71v2sh/B71v2sh.B71v2sh_alignments | grep 1 -o | wc -l
+awk '$1 ~ /Chr1/ {print substr($2, 4738666, 4874894-4738666+1)}' B71v2sh_self_align/B71v2sh.B71v2sh_alignments | grep 1 -o | wc -l
 ```
-answer = 136147
+Tree distance = 0.07 for 1,600 nt alignment; actual no. of nucleotides in region = 136,147 nt; Phylogenetic distance = 0.07 * 1600/136147  = 8E-4
+### 2PoSt
 ```bash
-awk '$1 ~ /Chr7/ {print substr($2, 171533, 232826-171533+1)}' B71v2sh/B71v2sh.B71v2sh_alignments | grep 1 -o | wc -l
+awk '$1 ~ /Chr7/ {print substr($2, 171533, 232826-171533+1)}' B71v2sh_self_align/B71v2sh.B71v2sh_alignments | grep 1 -o | wc -l
 ```
-answer = 60716
+Tree distance = 0.7 for 2,000 nt alignment; actual no. of nucleotides in region = 60,716 nt; Phylogenetic distance = 0.7 * 2000/60716 answer = 0.02
+### 2PoX
+```bash
+awk '$1 ~ /Chr2/ {print substr($2, 5896248, 6400037-5896248+1)}' B71v2sh_self_align/B71v2sh.B71v2sh_alignments | grep 1 -o | wc -l
+```
+Tree distance = 0.004 for 5,286 nt alignment; actual no. of nucleotides in region = 503,498 nt; Phylogenetic distance = 0.004 * 5286/503498 answer = 1.3E-4
