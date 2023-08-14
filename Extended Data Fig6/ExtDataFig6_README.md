@@ -31,8 +31,8 @@ cat 2PoX_even_more_extended_haplotypes.txt | perl -ne 'chomp($_); ($s = $_) =~ s
 ```bash
 awk 'NR == 3 {for(i=66000;i<=71285; i++) print $i}' CPAug3121/B71.chr2.V2.complete.cp > 2PoX_varsites.txt
 ```
-## 3. Convert phylogenetic distances to differences/total number of genomic sites queried (not just variant sites).
-This was accomplished by counting non-repetitive DNA positions in the B71v2sh self-aligned alignment string and scaling the tree distances accordingly:
+## 3. Convert tree distances to true phylogenetic distances (scale against total number of nucleotide positions queried not just variant sites).
+This was accomplished by counting non-repetitive DNA positions in the target regions by interrogating the B71v2sh self-aligned alignment string and scaling the tree distances accordingly:
 ```bash
 awk '$1 ~ /Chr1/ {print substr($2, 4738666, 4874894-4738666+1)}' B71v2sh/B71v2sh.B71v2sh_alignments | grep 1 -o | wc -l
 ```
