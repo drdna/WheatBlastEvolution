@@ -10,10 +10,10 @@ for (f in 1:7) {
   z <- y[y$clade != "T",]
 
   # determine minimum value in each column
-  windows <- as.numeric(apply(z,1,min))
+  windows <- as.numeric(apply(z,2,min))
 
   # extract columns with non-zero values
-  nonzero <- windows[as.numeric(apply(z,1,min)) > 0]
+  nonzero <- windows[as.numeric(apply(z,2,min)) > 0]
 
   # calculate proportion of columns with zero as lowest value
   proportionZero <- 1 - (length(nonzero)/length(windows))
