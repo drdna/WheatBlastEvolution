@@ -61,8 +61,8 @@ for f in `ls VCF_FILES/*vcf`; do SmartSNPs.pl B71_ALIGN_STRINGs/B71.B71_alignmen
 ```bash
 perl Summarize_SNPs.pl CHR1CHR2CHR5_FINAL > Chr1Ch2Chr5_sites.txt
 ```
-(note: inspection of the resulting output file revealed no obvious problems with the dataset)
-3. Next, we used the [GATKviSNPcaller.pl](/scripts/bowtieGATK/GATKviSNPcaller.pl) script to compare variant calls made using the  "genome assembly x reference genome" strategy versus the "reads x reference genome" approach.
+(note: inspection of the resulting output file revealed no obvious problems with the dataset).
+2. Next, we used the [GATKviSNPcaller.pl](/scripts/bowtieGATK/GATKviSNPcaller.pl) script to compare variant calls made using the  "genome assembly x reference genome" strategy versus the "reads x reference genome" approach.
 ```bash
 perl GATKviSNPcaller.pl samples.txt Chr1Chr2Chr5_sites.txt B71v5_SNPs > Chr1Chr2Chr5_GATKviSNPs.txt
 ```
