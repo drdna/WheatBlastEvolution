@@ -3,7 +3,7 @@
 #SBATCH --time 12:00:00
 #SBATCH --job-name=bowtie2-GATK
 #SBATCH --nodes=1
-#SBATCH --ntasks=16
+#SBATCH --ntasks=1
 #SBATCH --partition=<partition>  
 #SBATCH --mem=100GB
 #SBATCH --mail-type ALL
