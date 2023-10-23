@@ -1,5 +1,5 @@
 ## Fig 1C. Neighbor-joining tree
-1. OPen terminal wondow #1 and start a new SNP calling project:
+1. Open terminal window #1 and start a new SNP calling project:
 ```bash
 perl iSNPcaller_MT.pl WheatBlast
 ```
